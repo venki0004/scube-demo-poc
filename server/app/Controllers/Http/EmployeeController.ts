@@ -1,7 +1,6 @@
 import Employee from "App/Models/Employee"
-import Validator from "validatorjs"
-import moment from "moment";
 import { each } from "lodash"
+const Validator = require('validatorjs')
 
 export default class EmployeeController {
      /**

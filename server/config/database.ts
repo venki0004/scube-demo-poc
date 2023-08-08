@@ -40,13 +40,13 @@ const databaseConfig: DatabaseConfig = {
         port: Env.get('MSSQL_PORT'),
         server: Env.get('MSSQL_SERVER'),
         password: Env.get('MSSQL_PASSWORD', ''),
-        database: Env.get('MSSQL_DB_NAME'),
+        database: Env.get('MSSQL_DB_NAME')
       },
       migrations: {
         naturalSort: true,
       },
       healthCheck: false,
-      debug: false,
+      debug: true,
     }
   }
 }
