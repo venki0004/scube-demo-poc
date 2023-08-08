@@ -36,30 +36,30 @@ const UserListing = () => {
             title: "Employee ID",
         },
         {
-            title: "Image",
-        },
-        {
-            title: "First Name",
-        },
-        {
-            title: "Last Name",
-        },
-        {
-            title: "Phone Number",
+            title: "Emp Name",
         },
         {
             title: "Email ID",
         },
 
         {
-            title: "Designation",
+            title: "Card No",
         },
 
         {
-            title: "Group",
+            title: "Company",
         },
         {
-            title: "Enable/ Disable",
+            title: "Access Type",
+        },
+        {
+            title: "Badge Type",
+        },
+        {
+            title:"Card Type"
+        },
+        {
+            title:"Card Status"
         },
         {
             title: "Action",
@@ -69,106 +69,30 @@ const UserListing = () => {
 
     const navigate = useNavigate();
 
-    const [filterOpen, setFilterOpen] = useState(false);
     const [openDelete, setOpenDelete] = useState(false);
     const [selectedEmployee, setSelectedEmployee] = useState('');
-    const [isModifiedFilter, setIsModifiedFilter] = useState(false);
-
-
-    const [filtersCount, setFiltersCount] = useState(0);
-    const [startDate, setStartDate] = useState();
-    const [filterList, setFilterList] = useState({} as any);
-    const [endDate, setEndDate] = useState();
     const { list, isLoading, metadata } = useSelector(
         (state: any) => state.employee
     );
 
-    // DateRange picker
-    const handleDateRangeFilter = (dates: any) => {
-        const [start, end] = dates;
-        setStartDate(start);
-        setEndDate(end);
-        const sDate = moment(start).format("YYYY-MM-DD");
-        const eDate = moment(end).format("YYYY-MM-DD");
-        setParams({ ...params, start_date: sDate, end_date: eDate });
-        setIsModifiedFilter(true)
-    };
 
     const [currentPage, setCurrentPage] = useState(1);
 
     const [params, setParams] = useState(initialStates);
 
-    const statusData = [
-        {
-            id: "false",
-            name: "InActive",
-        },
-        {
-            id: "true",
-            name: "Active",
-        },
-    ];
-
-    const resetFilter = () => {
-        setCurrentPage(1);
-        setParams({ ...params, ...initialStates });
-        setFiltersCount(0);
-        dispatch(fetchEmployees(initialStates, 1));
-        setStartDate("" as any);
-        setEndDate("" as any);
-        setIsModifiedFilter(false)
-    };
-
-    const ToggleFilter = () => {
-        filterOpen ? setFilterOpen(false) : setFilterOpen(true);
-    };
-
-    const ApplyFilter = () => {
-        setCurrentPage(1);
-        dispatch(fetchEmployees(params, 1));
-        let p = JSON.parse(JSON.stringify(params));
-        delete p.start_date
-        const filtercount = CountItems(p);
-        setFiltersCount(filtercount);
-    };
-
-    const onFilterChange = (event: any) => {
-        setParams({ ...params, [event.target.name]: event.target.value });
-        setIsModifiedFilter(true)
-    };
-
-    useEffect(() => {
-        fetchPrerequest();
-    }, []);
 
     useMemo(() => {
         dispatch(fetchEmployees(params, currentPage));
     }, [currentPage]);
 
-    const fetchPrerequest = () => {
-        axiosInstance
-            .get(`/admin/employees/prequestie`)
-            .then((response) => {
-                const data = response.data.data;
-                console.log(data)
-                setFilterList({
-                    designations: data.designations.map(
-                        (x: any) => x.designation
-                    ),
-                });
-            })
-            .catch((error) => {
-                const { errors, message } = error.response.data;
-                const errorMsg = errors[Object.keys(errors)[0]] || message;
-                showToastMessage(errorMsg, "error");
-            });
-    };
+
 
     const handleToggleChange = (event: any, user: any) => {
         event.preventDefault();
+        console.log(user)
         axiosInstance
             .patch(`/admin/employees/update-status/${user.id}`, {
-                status: !user.is_active,
+                status: user.card_status ==='Active' ? false : true,
             })
             .then((response) => {
                 showToastMessage(response.data.data.message, "success");
@@ -180,43 +104,6 @@ const UserListing = () => {
                 showToastMessage(errorMsg, "error");
             });
     };
-
-    const onRowDeleteClick = (item: any) => {
-        setSelectedEmployee(item.id);
-        setOpenDelete(true)
-    }
-
-    const onDeleteConfirm = (item: any) => {
-        axiosInstance
-            .delete(`/admin/employees/${selectedEmployee}`, {})
-            .then((response) => {
-                showToastMessage("EMPLOYEE DELETED SUCCESSFULLY", "success");
-                dispatch(fetchEmployees(params, currentPage));
-                setSelectedEmployee('');
-                setOpenDelete(false)
-            })
-            .catch((error) => {
-                const { errors, message } = error.response.data;
-                const errorMsg = errors[Object.keys(errors)[0]] || message;
-                showToastMessage(errorMsg, "error");
-                setSelectedEmployee('');
-                setOpenDelete(false)
-            });
-    }
-    const onDeleteCancel = (item: any) => {
-        setSelectedEmployee('');
-        setOpenDelete(false)
-    }
-
-
-    const [f4Modal, setF4Modal] = useState(false)
-
-    const f4ModalOpen = () => {
-        setF4Modal(true)
-    }
-    const f4ModalClose = () => {
-        setF4Modal(false)
-    }
 
 
 
@@ -283,7 +170,6 @@ const UserListing = () => {
                             cols={cols}
                             data={list}
                             handleToggleChange={handleToggleChange}
-                            onRowDeleteClick={onRowDeleteClick}
                         />
                     </div>
 
@@ -298,14 +184,6 @@ const UserListing = () => {
                             }}
                         />
                     </div>
-                    {/* 1. Warning Popup */}
-                    <ConfirmDelete
-                        handleConfirm={onDeleteConfirm}
-                        handleDialogClose={onDeleteCancel}
-                        open={openDelete}
-                        title={`Are you sure of deleting this employee record?`}
-                        isLoading={false}
-                    />
                 </div>
             ) : (
                 <div className="flex flex-col items-center justify-center gap-4 mt-6">

@@ -9,41 +9,13 @@ import { makeStyles } from "@mui/styles";
 
 import { Link } from "react-router-dom";
 import { encryptData } from "../../../../utils/encryption";
-import Status from "../../../Common/Status";
 import Toggle from "../../../Common/Input/Toggle";
 import { Tooltip } from "@mui/material";
-import moment from "moment";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-import IconButton from "@mui/material/IconButton";
-import { useState } from "react";
-import { copyToClipboard, showToastMessage } from "../../../../utils/helpers";
-import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
-import DialogTitle from "@mui/material/DialogTitle";
-import Slide from "@mui/material/Slide";
-import { TransitionProps } from "@mui/material/transitions";
-import React from "react";
-import Avatar from '@mui/material/Avatar';
-import viewIcon from '../../../../assets/icons/ListingIcons/viewIcon.svg'
-
-const Transition = React.forwardRef(function Transition(
-    props: TransitionProps & {
-        children: React.ReactElement<any, any>;
-    },
-    ref: React.Ref<unknown>
-) {
-    return <Slide direction="up" ref={ref} {...props} />;
-});
 
 interface BasicTableProps {
     cols: any;
     data: any;
     handleToggleChange: any;
-    onRowDeleteClick: any
 }
 
 const width = window.innerWidth;
@@ -67,30 +39,8 @@ const useStyles = makeStyles(() => ({
     },
 }));
 
-const CardsTable = ({ cols, data, handleToggleChange, onRowDeleteClick, }: BasicTableProps) => {
+const CardsTable = ({ cols, data, handleToggleChange, }: BasicTableProps) => {
     const classes = useStyles();
-    const [openElem, setOpenElem] = useState(null);
-    const [anchorEl, setAnchorEl] = useState(null);
-    const [open, setOpen] = useState(false);
-
-    const [shareParams, setShareParams] = useState({
-        qr_image: "",
-    });
-    const handleClick = (elem: any) => (event: any) => {
-        setAnchorEl(event.currentTarget);
-        setOpenElem(elem);
-    };
-
-    const handleClose = () => {
-        setAnchorEl(null);
-        setOpenElem(null);
-        setOpen(false);
-    };
-
-    const onRowDelete = (item: any) => {
-        onRowDeleteClick(item)
-        handleClose()
-    };
 
     return (
         <TableContainer
@@ -145,17 +95,27 @@ const CardsTable = ({ cols, data, handleToggleChange, onRowDeleteClick, }: Basic
                             }}
                             className={classes.tr}
                         >
-                            <TableCell align="center">{item.id}</TableCell>
-                            <TableCell align="center">
-                                <div>
-                                    {/* <img
-                                        className="w-[44px] h-[44px] rounded-full cursor-pointer"
-                                        src={item.image_url ?? "https://picsum.photos/id/237/100/100"} alt="employee_image" /> */}
+                            <TableCell align="center">{item.emp_id}</TableCell>
 
-                                    <Avatar alt="employee_image" src={item.image_url} />
+                            <TableCell
+                                align="center"
+                                sx={{ fontSize: "0.8rem", color: "#141C4C" }}
+                            >
+                                {item.f_name} {item.l_name}
+                            </TableCell>
 
-                                </div>
+                            <TableCell
+                                align="center"
+                                sx={{ fontSize: "0.8rem", color: "#141C4C" }}
+                            >
+                                {item.email}
+                            </TableCell>
 
+                            <TableCell
+                                align="center"
+                                sx={{ fontSize: "0.8rem", color: "#141C4C" }}
+                            >
+                                {item.card_no}
                             </TableCell>
 
 
@@ -163,21 +123,7 @@ const CardsTable = ({ cols, data, handleToggleChange, onRowDeleteClick, }: Basic
                                 align="center"
                                 sx={{ fontSize: "0.8rem", color: "#141C4C" }}
                             >
-                                {item.first_name}
-                            </TableCell>
-
-                            <TableCell
-                                align="center"
-                                sx={{ fontSize: "0.8rem", color: "#141C4C" }}
-                            >
-                                {item.last_name}
-                            </TableCell>
-
-                            <TableCell
-                                align="center"
-                                sx={{ fontSize: "0.8rem", color: "#141C4C" }}
-                            >
-                                {item.phone ?? '-'}
+                                {item.company }
                             </TableCell>
 
 
@@ -185,28 +131,21 @@ const CardsTable = ({ cols, data, handleToggleChange, onRowDeleteClick, }: Basic
                                 align="center"
                                 sx={{ fontSize: "0.8rem", color: "#141C4C" }}
                             >
-                                {item.email || "NA"}
-                            </TableCell>
-
-
-                            <TableCell
-                                align="center"
-                                sx={{ fontSize: "0.8rem", color: "#141C4C" }}
-                            >
-                                {item.designation || "NA"}
+                                {item.access_level}
                             </TableCell>
 
                             <TableCell
                                 align="center"
                                 sx={{ fontSize: "0.8rem", color: "#141C4C" }}
                             >
-                                <div className="flex items-center gap-2">
-                                    {
-                                        item.group.map((item: any) => (
-                                            <span>{item},</span>
-                                        ))
-                                    }
-                                </div>
+                                {item.badge_type}
+                            </TableCell>
+
+                            <TableCell
+                                align="center"
+                                sx={{ fontSize: "0.8rem", color: "#141C4C" }}
+                            >
+                                {item.card_type}
                             </TableCell>
 
 
@@ -217,7 +156,7 @@ const CardsTable = ({ cols, data, handleToggleChange, onRowDeleteClick, }: Basic
                             >
                                 <Toggle
                                     name=""
-                                    ischecked={item?.is_active}
+                                    ischecked={item?.card_status ==='Active' ? true : false}
                                     handleCheck={(e: any) => {
                                         handleToggleChange(e, item);
                                     }}
@@ -228,15 +167,7 @@ const CardsTable = ({ cols, data, handleToggleChange, onRowDeleteClick, }: Basic
                                 sx={{ padding: "0px", fontSize: "0.8rem" }}
                             >
                                 <div className="flex justify-center items-center gap-2">
-                                    <div>
-                                        <Tooltip title="View Employee">
-                                            <Link to={`/admin/employees/view/${item.id}`}>
-                                                <img src={viewIcon} alt="viewIcon" className="w-[24px] h-[24px] object-fill  cursor-pointer" />
-                                            </Link>
-                                        </Tooltip>
-                                    </div>
-
-                                    {/* <Link
+                                    <Link
                                         to={`/admin/employees/edit/${encryptData(
                                             item.id
                                         )}`}
@@ -250,53 +181,14 @@ const CardsTable = ({ cols, data, handleToggleChange, onRowDeleteClick, }: Basic
                                             </svg>
 
                                         </Tooltip>
-                                    </Link> */}
-
-                                    {/* <div key={index}>
-                                        <IconButton
-                                            aria-label="more"
-                                            id="long-button"
-                                            aria-controls={"long-menu" + index}
-                                            aria-haspopup="true"
-                                            onClick={handleClick(index)}
-                                        >
-                                            <MoreVertIcon />
-                                        </IconButton>
-                                        <Menu
-                                            id={"long-menu" + index}
-                                            anchorEl={anchorEl}
-                                            keepMounted
-                                            open={openElem === index}
-                                            onClose={handleClose}
-                                        >
-                                            <MenuItem
-                                                onClick={() =>
-                                                    onRowDelete(item)
-                                                }
-                                            >
-                                                Delete Employee
-                                            </MenuItem>
-                                        </Menu>
-                                    </div> */}
-
+                                    </Link> 
+                                  
                                 </div>
                             </TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
             </Table>
-            <Dialog
-                open={open}
-                TransitionComponent={Transition}
-                keepMounted
-                onClose={handleClose}
-                aria-describedby="alert-dialog-slide-description"
-            >
-                <DialogTitle>{"Scan the QR"}</DialogTitle>
-                <DialogContent>
-                    <img src={shareParams.qr_image} />
-                </DialogContent>
-            </Dialog>
         </TableContainer>
     );
 };

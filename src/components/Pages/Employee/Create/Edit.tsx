@@ -14,7 +14,6 @@ const EditEmployee = () => {
                 <BreadCrumb
                     links={[
                         { path: "Employees", url: "/admin/employees" },
-                        { path: "View Employee", url: `/admin/employees/view/${id}` },
                         { path: "Edit Employee", url: "" },
                     ]}
                 />

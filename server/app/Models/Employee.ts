@@ -48,7 +48,6 @@ export default class Employee extends BaseModel {
             page = 1,
             search_key = '',
             status = '',
-            designation = '',
             start_date = '',
             end_date = '',
         } = request.qs()
@@ -62,38 +61,33 @@ export default class Employee extends BaseModel {
             query.where('created_at', '<=', end)
         }
 
-        if (status != '') {
-            query = query.where('is_active', '=', status == 'true' ? 1 : 0)
+        if (status) {
+            query = query.where('CARD_STATUS', status)
         }
-
-        if (designation) {
-            query = query.where('designation', '=', designation)
-        }
-
         if (search_key) {
             query = query.where((sub_query) => {
                 sub_query
-                    .orWhere('first_name', 'LIKE', `%${search_key}%`)
-                    .orWhere('last_name', 'LIKE', `%${search_key}%`)
-                    .orWhere('id', 'LIKE', `%${search_key}%`)
+                    .orWhere('F_NAME', 'LIKE', `%${search_key}%`)
+                    .orWhere('L_NAME', 'LIKE', `%${search_key}%`)
+                    .orWhere('ID', 'LIKE', `%${search_key}%`)
             })
         }
 
         return query
-            .whereNull('deleted_at')
             .select(
-                'id',
-                'first_name',
-                'last_name',
-                'image_url',
-                'designation',
-                'team',
-                'group',
-                'email',
-                'is_active',
-                'created_at',
+                'ID',
+                'F_NAME',
+                'L_NAME',
+                'EMP_ID',
+                'CARD_NO',
+                'ACCESS_LEVEL',
+                'BADGE_TYPE',
+                'COMPANY',
+                'CARD_TYPE',
+                'CARD_STATUS',
+                'EMAIL'
             )
-            .orderBy('id', 'desc')
+            .orderBy('ID', 'desc')
             .paginate(page, limit)
     }
 }

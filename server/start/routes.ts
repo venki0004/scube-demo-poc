@@ -23,3 +23,16 @@ import Route from '@ioc:Adonis/Core/Route'
 Route.get('/', async () => {
   return { hello: 'world' }
 })
+Route.group(() => {
+
+  Route.patch('employees/update-status/:id', 'EmployeeController.updateStatus').middleware(
+    'find:Employee'
+  )
+  Route.resource('employees', 'EmployeeController')
+    .middleware({
+      update: ['find:Employee'],
+      show: ['find:Employee'],
+      destroy: ['find:Employee'],
+    })
+    .only(['index', 'update', 'show', 'store', 'destroy'])
+}).prefix('admin')

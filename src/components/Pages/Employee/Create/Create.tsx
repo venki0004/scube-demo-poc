@@ -8,11 +8,11 @@ const Create = () => {
                 <BreadCrumb
                     links={[
                         { path: "List of Employees", url: "/admin/employees" },
-                        { path: "Add Individual Employee", url: "" },
+                        { path: "Add  Employee", url: "" },
                     ]}
                 />
                 <p className="text-xl font-extrabold text-SpaceCadet font-nunitoRegular">
-                    Add Individual Employee
+                    Add  Employee
                 </p>
                 <br />
 
