@@ -1,0 +1,12 @@
+{
+    "Codegeex.DisabledFor": {
+        "scss": true
+    },
+    "svg.preview.background": "custom",
+    "Codegeex.EnableExtension": false,
+    "cSpell.words": [
+        "filtercount",
+        "managedevice",
+        "Sidebaricon"
+    ]
+}
