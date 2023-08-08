@@ -42,7 +42,7 @@ const databaseConfig: DatabaseConfig = {
         password: Env.get('MSSQL_PASSWORD', ''),
         database: Env.get('MSSQL_DB_NAME')
       },
-      migrations: {
+      migrations: { 
         naturalSort: true,
       },
       healthCheck: false,
