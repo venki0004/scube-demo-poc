@@ -10,6 +10,7 @@ import {
 
 // assets
 import Logo from "../assets/images/logo.svg";
+import SmallLogo from "../assets/images/small-logo.svg";
 import ScubeLogo from "../assets/icons/sube-logo-white.svg";
 import ForgotPassword from "../components/Pages/Auth/ForgotPassword";
 
@@ -135,7 +136,7 @@ const PrivateRoute = ({ children, module }: PrivateRouteProps) => {
                         {isSidebarOpen ? (
                             <img src={Logo} alt="all_logos" className="w-2/3 m-auto" />
                         ) : (
-                            <img src={Logo} alt="logo" />
+                            <img src={SmallLogo} alt="logo" />
                         )}
                     </span>
                     <button

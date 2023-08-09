@@ -211,6 +211,7 @@ export default class EmployeeController {
     public async updateStatus({ request, response }) {
         try {
             const { status } = request.body()
+            
             const employee = request['employee']
             await Employee.query().where('id', employee.$extras.ID).update({
                 CARD_STATUS: status == true ? 'Active' : 'Disabled'

@@ -322,7 +322,7 @@ const Form: React.FC<Props> = ({ edit, id, isview }) => {
                                     error={errors?.company}
                                     helperText={errors?.company}
                                     handleChange={handleChange}
-                                    label="Conpany"
+                                    label="Company"
                                     name="company"
                                 />
                                 <Input
