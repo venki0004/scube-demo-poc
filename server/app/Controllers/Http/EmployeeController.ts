@@ -1,7 +1,7 @@
 import Employee from "App/models/Employee"
 import { each } from "lodash"
 const Validator = require('validatorjs')
-import {runBatch} from '../../helpers/bactchProcess'
+// import {runBatch} from '../../helpers/bactchProcess'
 
 export default class EmployeeController {
     /**
@@ -11,7 +11,7 @@ export default class EmployeeController {
  */
     public async index({ request, response }) {
         try {
-            runBatch()
+            // runBatch()
             const list = await Employee.listing(request)
             const [total_list] = await Employee.query()
                 .count('* as total')
