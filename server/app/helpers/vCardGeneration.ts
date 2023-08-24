@@ -1,1223 +1,1548 @@
+function getOtherTypeIcon(type: number) {
+    let icon = `https://scube-assets.s3.ap-south-1.amazonaws.com/app-profile-v3/info.svg`;
 
-export function renderHTML(profile: any, meta: any, vCardFormattedText: string) {
+    switch (type) {
+        case 1:
+            icon = `https://scube-assets.s3.ap-south-1.amazonaws.com/app-profile-v3/education.svg`
+            break;
+        case 2:
+            icon = `https://scube-assets.s3.ap-south-1.amazonaws.com/app-profile-v3/experience.svg`
+            break;
+        case 3:
+            icon = `https://scube-assets.s3.ap-south-1.amazonaws.com/app-profile-v3/hobbies.svg`
+            break;
+        case 4:
+            icon = `https://scube-assets.s3.ap-south-1.amazonaws.com/app-profile-v3/info.svg`
+            break;
+        default:
+            icon = `https://scube-assets.s3.ap-south-1.amazonaws.com/app-profile-v3/info.svg`;
+            break;
+    }
+    return icon;
+}
+
+function getOtherTypeClass(type: number) {
+    let icon = `tile-info`;
+
+    switch (type) {
+        case 1:
+            icon = `tile-education `
+            break;
+        case 2:
+            icon = `tile-experience`
+            break;
+        case 3:
+            icon = `tile-hobbies`
+            break;
+        case 4:
+            icon = `tile-info`
+            break;
+        default:
+            icon = `tile-info`;
+            break;
+    }
+    return icon;
+}
+
+function getMessengerTypeIcon(type: number) {
+    let icon = ``;
+
+    switch (type) {
+        case 20:
+            icon = `https://scube-assets.s3.ap-south-1.amazonaws.com/app-profile-v3/whatsapp.svg`
+            break;
+        case 21:
+            icon = `https://scube-assets.s3.ap-south-1.amazonaws.com/app-profile-v3/messanger.svg`
+            break;
+        default:
+            icon = `https://scube-assets.s3.ap-south-1.amazonaws.com/app-profile-v3/custom-link.svg`
+            break;
+    }
+    return icon;
+}
+function getMessengerTypeClass(type: number) {
+    let className = ``;
+
+    switch (type) {
+        case 20:
+            className = `tile-whatsapp`
+            break;
+        case 21:
+            className = `tile-messenger`
+            break;
+        default:
+            className = `tile-custom`
+            break;
+    }
+    return className;
+}
+
+function getWebsiteTypeIcon(type: number) {
+    let icon = ``;
+
+    switch (type) {
+        case 21:
+            icon = `https://scube-assets.s3.ap-south-1.amazonaws.com/app-profile-v3/drive.svg`
+            break;
+        case 22:
+            icon = `https://scube-assets.s3.ap-south-1.amazonaws.com/app-profile-v3/document.svg`
+            break;
+        default:
+            icon = `https://scube-assets.s3.ap-south-1.amazonaws.com/app-profile-v3/cloud.svg`
+            break;
+    }
+    return icon;
+}
+function getWebsiteTypeClass(type: number) {
+    let className = `tile-custom`;
+
+    switch (type) {
+        case 21:
+            className = `tile-drive `
+            break;
+        case 22:
+            className = `tile-document`
+            break;
+        default:
+            className = `tile-cloud`
+            break;
+    }
+    return className;
+}
+
+
+function getPaymentTypeIcon(type: number) {
+    let icon = `https://scube-assets.s3.ap-south-1.amazonaws.com/app-profile-v3/gpay.svg`;
+
+    switch (type) {
+        case 1:
+            icon = `https://scube-assets.s3.ap-south-1.amazonaws.com/app-profile-v3/gpay.svg`
+            break;
+        case 2:
+            icon = `https://scube-assets.s3.ap-south-1.amazonaws.com/app-profile-v3/paypal.svg`
+            break;
+        case 3:
+            icon = `https://scube-assets.s3.ap-south-1.amazonaws.com/app-profile-v3/paytm.svg`
+            break;
+        default:
+            break;
+    }
+    return icon;
+}
+function getPaymentClass(type: number) {
+    let className = `tile-gpay`;
+
+    switch (type) {
+        case 1:
+            className = `tile-gpay`
+            break;
+        case 2:
+            className = `tile-paypal`
+            break;
+        case 3:
+            className = `tile-paytm`
+            break;
+        default:
+            break;
+    }
+    return className;
+}
+
+
+function getSocialTypeIcon(type: number) {
+    let icon = `https://scube-assets.s3.ap-south-1.amazonaws.com/app-profile-v3/skype.svg`;
+
+    switch (type) {
+        case 1:
+            icon = `https://scube-assets.s3.ap-south-1.amazonaws.com/app-profile-v3/skype.svg`
+            break;
+        case 2:
+            icon = `https://scube-assets.s3.ap-south-1.amazonaws.com/app-profile-v3/hangouts.svg`
+            break;
+        case 3:
+            icon = `https://scube-assets.s3.ap-south-1.amazonaws.com/app-profile-v3/twitter.svg`
+            break;
+        case 4:
+            icon = `https://scube-assets.s3.ap-south-1.amazonaws.com/app-profile-v3/linkedin.svg`
+            break;
+        case 5:
+            icon = `https://scube-assets.s3.ap-south-1.amazonaws.com/app-profile-v3/facebook.svg`
+            break;
+        case 6:
+            icon = `https://scube-assets.s3.ap-south-1.amazonaws.com/app-profile-v3/instagram.svg`
+            break;
+        default:
+            icon = `https://scube-assets.s3.ap-south-1.amazonaws.com/app-profile-v3/custom-link.svg`
+            break;
+    }
+    return icon;
+}
+function getSocialTypeClass(type: number) {
+    let className = ``;
+
+    switch (type) {
+        case 1:
+            className = `tile-skype`
+            break;
+        case 2:
+            className = `tile-hangout`
+            break;
+        case 3:
+            className = `tile-twitter`
+            break;
+        case 4:
+            className = `tile-linkedin`
+            break;
+        case 5:
+            className = `tile-facebook`
+            break;
+        case 6:
+            className = `tile-instagram`
+            break;
+        default:
+            className = `tile-custom`
+            break;
+    }
+    return className;
+}
+
+function getSocialLink(type: number, value: string) {
+    const segments = value.split("/");
+    const username = segments[segments.length - 1];
+    let link = ``
+    switch (type) {
+        case 1:
+        case 2:
+            link = !value.startsWith("https") && !value.startsWith("http") ? `https://${value}` : value;
+            break;
+        case 3:
+            link = `https://twitter.com/${username}`
+            break;
+        case 4:
+            link = `${value.includes('company') ? value : "https://linkedin.com/in/" + username}`
+            break;
+        case 5:
+            link = `https://facebook.com/${username}`
+            break;
+        case 6:
+            link = `https://instagram.com/${username}`
+            break;
+        default:
+            link = !value.startsWith("https") && !value.startsWith("http") ? `https://${value}` : value;
+            break;
+    }
+    return link
+}
+
+function getMessengerLink(type: number, value: string) {
+    const segments = value.split("/");
+    const username = segments[segments.length - 1];
+    let link = ``
+    switch (type) {
+        case 21:
+            link = `https://m.me/${username}`
+            break;
+        case 20:
+            link = `https://wa.me/${username}?text=Hi`
+            break;
+        default:
+            link = !value.startsWith("https") && !value.startsWith("http") ? `https://${value}` : value;
+            break;
+    }
+    return link
+}
+function getAddressClass(type: number) {
+    let className = ``
+    switch (type) {
+        case 1:
+            className = `tile-add-home`
+            break;
+        case 2:
+            className = `tile-add-office`
+            break;
+        case 3:
+            className = `tile-add-office`
+            break;
+        default:
+            className = `tile-add-home`
+            break;
+    }
+    return className
+}
+
+export function renderHTML(profile: any, response: any, vCardFormattedText: string) {
+
+    let meta = JSON.parse(JSON.stringify(response))
+    let data: any = {
+        image_url: meta.image_url || '',
+        name: meta.displayName,
+        job: `${meta.job}`,
+        company: meta.company,
+        bio: meta.bio.length ? `<p class=" whitespace-break-spaces px-2 pb-4 text-sm text-text_color text-info-title block opacity-100 short-txt">${meta.bio.replace(/\\n/g, '<br>')}</p>` : '',
+        address: meta.addresses && meta.addresses.length ?
+            meta.addresses.map((x: any) => {
+                x['link_type'] = 'INFO';
+                x['card_type'] = 'ADDRESS'
+                x['icon'] = 'https://scube-assets.s3.ap-south-1.amazonaws.com/app-profile-v3/location.svg'
+                x['class'] = getAddressClass(x.type);
+                x['value'] = `${x.street} 
+                              ${x.city} 
+                              ${x.region} 
+                              ${x.country} 
+                              ${x.postcode}`.replace(/(\r\n|\n|\r)/gm, '').replace(/\s/g, '_');
+                return x;
+            }) : [],
+        others: meta.others && meta.others.length ?
+            meta.others.map((x: any) => {
+                x['link_type'] = 'INFO';
+                x['card_type'] = 'OTHERS';
+                x['icon'] = getOtherTypeIcon(x.type)
+                x['class'] = getOtherTypeClass(x.type)
+                
+                x.value = x.value.replace(/(\r\n|\n|\r)/gm, '').replace(/'/g, '__').replace(/"/g, '___').replace(/\s/g, '_');
+                return x;
+            }) : [],
+
+        payments: meta.payments && meta.payments.length ?
+            meta.payments.map((x: any) => {
+                x['link_type'] = 'INFO';
+                x['card_type'] = 'PAYMENT';
+                x['icon'] = getPaymentTypeIcon(x.type)
+                x['class'] = getPaymentClass(x.type);
+                x.value = x.value.replace(/(\r\n|\n|\r)/gm, '').replace(/\s/g, '_');
+                return x;
+            }) : [],
+        social: meta.social && meta.social.length ?
+            meta.social.map((x: any) => {
+                x['link_type'] = x.type == 1 ? 'INFO' : 'LINK';
+                x['card_type'] = 'SOCIAL';
+                x['url'] = getSocialLink(x.type, x.value)
+                x['icon'] = getSocialTypeIcon(x.type)
+                x['class'] = getSocialTypeClass(x.type);
+                x['label'] = x.type == 1 ? 'Skype' : x.label
+                return x;
+            }) : [],
+        messengers: [
+            ...meta.messengers && meta.messengers.phoneNumbers.length ?
+                meta.messengers.phoneNumbers.map((x: any, index: number) => {
+                    let dialCode = x.phone_dial_code || ''
+                    let phoneNumber = `${dialCode ? '+' + dialCode : dialCode} ${dialCode ? String(x.value).replace('+', '') : x.value}`
+                    x['link_type'] = 'PHONE';
+                    x['card_type'] = 'CONTACT';
+                    x['value'] = phoneNumber.replace(/\s/g, ''),
+                        x['class'] = 'tile-contact',
+                        x['icon'] = 'https://scube-assets.s3.ap-south-1.amazonaws.com/app-profile-v3/contact.svg';
+                    x['name'] = x.label
+                    return x;
+                }) : [],
+            ...meta.messengers && meta.messengers.emails.length ?
+                meta.messengers.emails.map((x: any) => {
+                    x['link_type'] = 'EMAIL';
+                    x['card_type'] = 'CONTACT';
+                    x['value'] = x.value,
+                    x['class'] = 'tile-email',
+                    x['icon'] = 'https://scube-assets.s3.ap-south-1.amazonaws.com/app-profile-v3/email.svg';
+                    x['name'] = x.label
+                    return x;
+                }) : [],
+            ...meta.messengers && meta.messengers.others.length ?
+                meta.messengers.others.map((x: any, index: number) => {
+                    x['link_type'] = 'LINK';
+                    x['card_type'] = 'CONTACT';
+                    x['value'] = !x.value.startsWith("https") && !x.value.startsWith("http") ? `https://${x.value}` : x.value;
+                    x['icon'] = getMessengerTypeIcon(x.type);
+                    x['class'] = getMessengerTypeClass(x.type);
+                    x['name'] = x.label
+                    x['url'] = getMessengerLink(x.type, x.value);
+                    return x;
+                }) : [],
+        ],
+        websites: [
+            ...meta.websites && meta.websites.website.length ?
+                meta.websites.website.map((x: any, index: number) => {
+                    x['link_type'] = 'LINK';
+                    x['card_type'] = 'WEBSITE';
+                    x['value'] = !x.value.startsWith("https") && !x.value.startsWith("http") ? `https://${x.value}` : x.value;
+                    x['class'] = 'tile-website',
+                    x['icon'] = 'https://scube-assets.s3.ap-south-1.amazonaws.com/app-profile-v3/website.svg';
+                    x['name'] = meta.websites.website.length > 1 ? 'Website' + (index + 1) : 'Website';
+                    return x;
+                }) : [],
+            ...meta.websites && meta.websites.others.length ?
+                meta.websites.others.map((x: any, index: number) => {
+                    x['link_type'] = 'LINK';
+                    x['card_type'] = 'WEBSITE';
+                    x['value'] = !x.value.startsWith("https") && !x.value.startsWith("http") ? `https://${x.value}` : x.value;
+                    x['icon'] = getWebsiteTypeIcon(x.type);
+                    x['class'] = getWebsiteTypeClass(x.type);
+                    x['name'] = x.label
+                    x['link'] = !x.value.startsWith("https") && !x.value.startsWith("http") ? `https://${x.value}` : x.value;
+                    return x;
+                }) : [],
+        ]
+    }
+
+    if (meta.services) {
+        data.others.push({
+            link_type: 'INFO',
+            card_type: 'OTHERS',
+            label: 'Services',
+            icon: getOtherTypeIcon(-1),
+            class: getOtherTypeClass(-1),
+            value: meta.services.replace(/(\r\n|\n|\r)/gm, '').replace(/'/g, '__').replace(/"/g, '___').replace(/\s/g, '_')
+        })
+    }
+    let sections = [
+        {
+            title: 'Contact Details',
+            sub_title: 'Click to download contact, email id, etc.',
+            key: 'messengers',
+            class: 'custom-card-contact',
+        },
+        {
+            title: 'Social Media',
+            sub_title: 'Click the icons to go to social media profiles.',
+            key: 'social',
+            class: 'custom-card-social',
+        },
+        {
+            title: 'Address & location',
+            sub_title: 'Click on the icons and access the location',
+            key: 'address',
+            class: 'custom-card-address',
+        },
+        {
+            title: 'Website & Links',
+            sub_title: 'Click to view documents or webpages and much more',
+            key: 'websites',
+            class: 'custom-card-website',
+        },
+        {
+            title: 'Payment',
+            sub_title: 'Get the payment UPI/number',
+            key: 'payments',
+            class: 'custom-card-payment',
+        },
+        {
+            title: 'Other Information ',
+            sub_title: 'Click on the icons to get more informtaion',
+            key: 'others',
+            class: 'custom-card-tile',
+        }
+    ]
     let html = `<!DOCTYPE html>
-   <html>
-   <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-      <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400&display=swap" rel="stylesheet">
-      <title>Scube App</title>
-      <style type="text/css">
-      body {
-          font-family: 'Lexend', sans-serif;
-          background: #1c1e22;
-      }
-  
-      .block-view,
-        .success-page {
-            background-color: #1c1e22;
-            color: #EDEDED;
-            max-width: 500px;
-            margin: 0 auto;
-            border: 1px solid #373535;
-        }
+    <html>
+    
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link href="https://api.fontshare.com/css?f[]=author@400,700&display=swap" rel="stylesheet">
+        <title>SCUBE PROFILE</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.2/gsap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.2/ScrollTrigger.min.js"></script>
+        <style type="text/css">
+            html,
+            body {
+                margin: 0;
+                padding: 0;
+            }
+    
+            .sec-mt {
+                margin-top: 48px;
+            }
+    
+            .sticky,.cus-sticky {
+                height: fit-content;
+                position: sticky;
+                position: -webkit-sticky;
+                z-index:50;
+            }
+    
+            #one,#success_page {
+                top: 0;
+                height: fit-content;
+                -webkit-transition: height 1s ease;
+                transition: height 1s ease;
+            }
+    
+            .container {
+                @apply max-w-7xl mx-auto px-6 md: px-12 xl:px-6;
+            }
+    
+            body {
+                font-family: 'Author', sans-serif;
+            }
+    
+            .card-tile {
+                border-radius: 12.492px;
+                background: #F8F8F8;
+                box-shadow: 0px 2.4009687900543213px 6.0024213790893555px 0px rgba(0, 0, 0, 0.15);
+            }
 
-        .success-page-contact {
-            background-color: #1c1e22;
-            color: #EDEDED;
-            max-width: 500px;
-            margin: 0 auto;
-            border: 1px solid #373535;
-        }
+            .box {
+                width: 75px;
+                height: 75px;
+                margin: auto;
+                box-shadow: 0px 2.114285707473755px 5.285714149475098px 1px rgba(0, 0, 0, 0.15);
+                -webkit-box-shadow: 0px 2.114285707473755px 5.285714149475098px 1px rgba(0, 0, 0, 0.15);
+            }
+    
+            .box span {
+                font-size: 12px;
+            }
+    
+    
+            .share-form input {
+                width: 100%;
+                background: #F4F6F7;
+                border: 1px solid #F3F3F3;
+                border-radius: 15px;
+            }
+    
+            .sub-title {
+                color: rgba(0, 0, 0, 0.45);
+            }
 
-        .success-page {
-            display: none;
-        }
-
-        .success-page-contact{
-            display: none;
-        }
-
-      h4 {
-          font-weight: 600;
-          font-size: 16px;
-          line-height: 20px;
-          color: #EDEDED !important;
-      }
-  
-      /*card section*/
-      @media(min-width: 300px) and (max-width: 700px) {
-          .card_view {
-              height: 252px !important;
-          }
-          .download-btn,.share-btn{
-            width: 140px !important;
-            height: 42px !important;
-          }
-
-      }
-  
-      @media(min-width: 500px) and (max-width: 1900px) {
-          .card_view {
-              height: 305px !important;
-          }
-      }
-  
-      .card_view {
-          background-image: url(https://scube-assets.s3.ap-south-1.amazonaws.com/share/card.svg);
-          background-repeat: no-repeat;
-          background-size: 100%;
-  
-          height: 220px;
-          margin-top: 50px;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          position: relative;
-          z-index: 9;
-      }
-  
-      .card_after_view:before {
-          content: '';
-          background-image: url(https://scube-assets.s3.ap-south-1.amazonaws.com/share/element_3.svg);
-          height: 45px;
-          width: 50px;
-          z-index: 0;
-          position: absolute;
-          top: 38px;
-          right: 0px;
-          background-repeat: no-repeat;
-          background-size: 100%;
-      }
-  
-      .card_after_view:after {
-          content: '';
-          background-image: url(https://scube-assets.s3.ap-south-1.amazonaws.com/share/element_4.svg);
-          height: 71px;
-          width: 50px;
-          z-index: 0;
-          position: absolute;
-          /* bottom: -3px; */
-          left: 0px;
-          background-repeat: no-repeat;
-          background-size: 100%;
-          top: 87%;
-  
-      }
-  
-      .card_view ul {
-          list-style: none;
-          padding: 0;
-      }
-  
-      .card_view ul li {
-          font-style: normal;
-          font-weight: 400;
-          font-size: 12px;
-          text-align: center;
-          color: #EDEDED;
-      }
-  
-      .card_view ul li:nth-child(1) {
-          font-weight: 600;
-          font-size: 16px;
-          text-align: center;
-          background: linear-gradient(180deg, #F3D75C 29.17%, #B98929 91.67%);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-          text-fill-color: transparent;
-      }
-  
-      /*card section*/
-      /*Bio content section*/
-      .bio-section {
-          padding: 16px 0;
-      }
-  
-      .bio-anchor-tag {
-          margin-bottom: 25px;
-          text-align: center;
-      }
-  
-      .bio-anchor-tag a {
-          background: #242426;
-          border-radius: 12px;
-          cursor: pointer;
-          padding: 10px;
-          color: #EDEDED !important;
-          font-size: 12px;
-          margin: 0 17px;
-      }
-  
-      .bio-content p {
-          font-weight: 400;
-          font-size: 12px;
-          line-height: 15px;
-          text-align: justify;
-  
-          color: #B3B9BB;
-      }
-  
-      .bio-content h4 {
-          font-weight: 600;
-          font-size: 16px;
-          line-height: 20px;
-          background: linear-gradient(180deg, #63FFEC 0%, #006889 100%);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-          text-fill-color: transparent;
-      }
-  
-      /*Bio content section*/
-      /*email section*/
-      .email-view {
-          position: relative;
-      }
-  
-      .email-view:before {
-          content: '';
-          background-image: url(https://scube-assets.s3.ap-south-1.amazonaws.com/share/element_2.svg);
-          height: 106px;
-          width: 80px;
-          z-index: 0;
-          position: absolute;
-          top: -117px;
-          right: -12px;
-          background-repeat: no-repeat;
-          background-size: 100%;
-          display:none;
-      }
-  
-      .email-view:after {
-          content: '';
-          background-image: url(https://scube-assets.s3.ap-south-1.amazonaws.com/share/element_3.svg);
-          height: 50px;
-          width: 50px;
-          z-index: 0;
-          position: absolute;
-          bottom: -25px;
-          left: -19px;
-          background-repeat: no-repeat;
-          background-size: 100%;
-      }
-  
-      .list-view {
-          list-style: none;
-          padding: 0;
-          margin: 28px 10px 0 10px;
-          display: flex;
-          justify-content: center;
-          text-align: center;
-          gap:1.6rem;
-      }
-  
-      .list-view li {
-        //   padding: 0 10px 0px 20px;
-      }
-      .social-list li {
-          padding: 0 !important;
-      }
-  
-      .list-view p {
-          margin: 10px 0 0 0;
-          font-size: 12px;
-          text-align: center;
-          color: #B3B9BB !important;
-      }
-  
-      .list-view li a {
-          background: linear-gradient(326.67deg, #474747 -12.07%, #0F0F12 99.84%);
-          box-shadow: -8px -6px 24px rgba(255, 255, 255, 0.04), 5px 8px 20px rgba(6, 8, 9, 0.46);
-          border-radius: 12px;
-          padding: 12px;
-      }
-  
-      /*email section*/
-      /*address location*/
-      .address-view {
-          position: relative;
-      }
-  
-      .address-view:before {
-          content: '';
-          background-image: url(https://scube-assets.s3.ap-south-1.amazonaws.com/share/element_1.svg);
-          height: 170px;
-          width: 80px;
-          z-index: 0;
-          position: absolute;
-          top: -79px;
-          right: -12px;
-          background-repeat: no-repeat;
-          background-size: 100%;
-          display:none;
-      }
-  
-      /*address location*/
-      /*payment view*/
-      .payment-view {
-          position: relative;
-      }
-  
-      .payment-view:before {
-          content: '';
-          background-image: url(https://scube-assets.s3.ap-south-1.amazonaws.com/share/element_3.svg);
-          height: 50px;
-          width: 50px;
-          z-index: 0;
-          position: absolute;
-          top: -11px;
-          right: -12px;
-          background-repeat: no-repeat;
-          background-size: 100%;
-      }
-  
-      /*payment view*/
-      .download-view {
-          background-color: #0E0E0F;
-          border-radius: 24px 24px 0 0;
-          border-width: 1px 1px 0 1px;
-          border-style: solid;
-          border-color: #656565;
-          padding: 30px 0;
-          color: #fff;
-      }
-  
-      .download-view p {
-          font-size: 13px;
-          text-align: center;
-      }
-  
-      .actions {
-        display: flex;
-        justify-content: center;
-        margin: auto;
-        padding-top: 8px;
-        gap: 14px;
-        align-items: center;
-    }
-
-    .download-btn {
-        width: 157px;
-        height: 48px;
-        font-size: 12px;
-        padding: 0.8em 1em;
-        border-radius: 10px;
-        background: linear-gradient(180deg, #fff578 0%, #b78527 100%);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        outline: none;
-        border:none;
-        color: #000;
-    }
-
-    .share-btn {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        outline: none;
-        position: relative;
-        gap: 8px;
-        padding: 0.8em 1em;
-        border-radius: 10px;
-        width: 157px;
-        height: 42px;
-        font-size: 12px;
-        background: transparent;
-        border:none;
-        box-shadow: -1px 0 0 1px rgb(255 220 120/ 75%), -1px -1px 0 1px rgb(255 245 120 /25%),
-            -1px 1px 0 1px rgb(255 245 120 /25%), 0 -1px 0 1px rgb(255 245 120 /50%),
-            0 1px 0 1px rgb(183 100 39 /50%), 1px -1px 0 1px rgb(183 121 39 /25%),
-            1px 1px 0 1px rgb(183 121 39 /25%), 1px 0 0 1px rgb(183 133 39 /75%);
-    }
-  
-    .btn-txt {
-        background: linear-gradient(to right, #fff578 0%, #b78527 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
-
-      .bottom-view {
-          position: fixed;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          z-index: 9;
-          transform: translateY(83%);
-          transition: all 1s ease;
-          max-width: 500px;
-          margin: 0 auto;
-      }
-  
-      .bottom-view:hover {
-          transform: translateY(0%);
-      }
-      /* SUCCESS */
-        .logo {
-            text-align: center;
-            padding: 70px 0;
-        }
-
-        .app-view {
-            padding: 0;
-            display: flex;
-            text-align: center;
-            align-items: center;
-            margin: 0 1rem;
-        }
-
-        .app-view img {
-            background: linear-gradient(326.67deg, #474747 -12.07%, #0F0F12 99.84%);
-            box-shadow: -8px -6px 24px rgb(255 255 255 / 4%), 5px 8px 20px rgb(6 8 9 / 46%);
+            .play-store{
+                background: #EBF2CA;
+                box-shadow: 0px 2px 4px rgba(183, 187, 162, 0.4);
+            }
+            .apk-icon {
+                padding: 1px 6px;
+                gap: 6px;
+                border-radius: 11px;
+            }
+            .share-form-sec {
+                width: 90% !important;
+                margin: auto;
+            }
+            .custom-card {
+            background: #FFFFFF;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(12.5px);
             border-radius: 12px;
-            padding: 12px;
         }
-
-        .app-content{
-            text-decoration: none !important;
-            padding-left: 1rem;
-
-        }
-        .app-content p:nth-child(1) {
-            font-weight: 300;
-            font-size: 9px;
-            line-height: 11px;
-            color: #FFFFFF;
-            margin: 0;
-            margin-bottom: 0;
-        }
-
-        .app-content p:nth-child(2) {
-            font-weight: 400;
-            font-size: 14px;
-            line-height: 18px;
-            color: #FFFFFF;
-            margin-bottom: 0;
-        }
-
-        .download-view-content p {
-            font-weight: 300;
-            font-size: 11px;
-            line-height: 14px;
-            /* identical to box height */
-            color: #BF9E68;
-            text-align: center;
-        }
-
-        .bottom-view.active {
-            transform: translateY(0%);
-        }
-
-        
-    .pop-view {
-        background: #0E0E0F;
-        opacity: 0.8;
-        border-radius: 24px;
-        padding: 30px;
-        max-width: 500px;
-         margin: auto;
-    }
-
-    .pop-view p {
-        margin: 0;
-        font-weight: 300;
-        font-size: 12px;
-        line-height: 15px;
-        color: #EDEDED;
-    }
-
-    .pop-view p:nth-child(1) {
-        font-weight: 700;
-        font-size: 24px;
-        line-height: 30px;
-
-        color: #EDEDED;
-    }
-
-    .custom-group {
-        height: 50px;
-        background: rgba(255, 255, 255, 0.12);
-        border-radius: 8px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 4px;
-        margin-bottom: 20px;
-    }
-
-    .custom-group input {
-        background: transparent;
-        border: none;
-        color: #EDEDED !important;
-    }
-
-    .custom-group input:focus {
-        background: transparent;
-        outline: none;
-        border: none;
-        box-shadow: none;
-    }
-
-
-      /* MODEL CSS */
-        .modal {
-        display: none;
-        position: fixed;
-        z-index: 99;
-        padding-top: 100px;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background: rgb(25 25 25);
-        }
-
-        .modal-content {
-        background-color: #fefefe;
-        margin: auto;
-        padding: 20px;
-        border: 1px solid #888;
-        width: 80%;
-        }
-
-        .close-icon{
-            position: absolute;
-            top: 22px;
-            right: 40px;
-        }
-
-        #errorMessage{
-            color: red;
-            font-size: 14px;
-            padding-bottom: 4px;
-        }
-        .bio-anchor-tag a{
-            text-decoration:none !important;
-            max-width: 97px;
-        }
-        .others-sec{
-            display: flex;
-            margin: auto;
-            width: 50%;
-        }
-      </style>
-  </head>
-  <body>
-    <div class="block-view">
-        <!-- card section -->
-        <section>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 position-relative">
-                        <div class="card_view">
-                            <img style="border-radius: 30px;" src=${profile.image ? profile.image : 'https://scube-assets.s3.ap-south-1.amazonaws.com/share/profile.png'} width="60px">
-                            <ul>
-                                <li>${profile.name}</li>
-                                <li>${profile.designation || ''}</li>
-                                <li>${meta.company || ''}</li>
-                            </ul>
-                        </div>
-                        <div class="card_after_view"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-  `;
-    if (meta.bio ||  (meta.others && meta.others.length)) {
-        const [edu, exep, skills, hobbies] = meta.others ? meta.others : []
-        html += `
-    <section class="bio-section">
-        <div class="container">
-            <div class="row mt-3" >
-                <div class="col-lg-12">
-                    ${meta.bio ? 
-                    `<div class="bio-content">
-                    <h4>Bio</h4>
-                    <p>${meta.bio}</p>
-                    </div>` : ''}
-                    ${ meta.others && meta.others.length ?
-                `<div class="bio-anchor-tag ${(edu || exep) ? 'others-sec':'d-none'}" >
-                         <a class="${(edu) ? 'd-flex':'d-none'}">${edu ? edu.label : ''}</a>
-                         <a class="${(exep) ? 'd-flex':'d-none'}">${exep  ?  exep.type === 2 ? 'Experience' : exep.label : ''}</a>
-                     </div>
-                    <div class="bio-anchor-tag pt-2 ${(skills || hobbies) ? 'others-sec':'d-none'}">
-                    <a class="${(skills) ? 'd-flex':'d-none'}">${skills ? skills.label : ''}</a>
-                    <a class="${(hobbies) ? 'd-flex':'d-none'}">${hobbies ? hobbies.label : ''}</a>
-                    </div>` : ''
-            }
-                </div>
-            </div>
-        </div>
-    </section>`
-    }
-
-    if (meta.phones.filter(x=>x.value).length || meta.emails.filter(x=>x.value).length) {
-        html += `<section class="bio-section">
-       <div class="container">
-           <div class="row">
-               <div class="col-lg-12">
-                   <div class="email-view">
-                       <h4 class="text-center">Phone, Messengers & Emails</h4>
-                   </div>
-               </div>
-           </div>
-           <div class="row">
-               <div class="col-lg-12">
-                   <div>
-                       <ul class="list-view">`
-
-        if (meta.phones.filter(x=>x.value).length) {
-            html += `<li>
-                                <a>
-                                    <img src="https://scube-assets.s3.ap-south-1.amazonaws.com/share/contact.svg">
-                                </a>
-                                <p>Contact</p>
-                            </li>`
-        }
-        if (meta.emails.filter(x=>x.value).length) {
-            html += `<li>
-                                <a>
-                                <img src="https://scube-assets.s3.ap-south-1.amazonaws.com/share/Mail_id.svg">
-                                </a>
-                                <p>Mail ID</p>
-                            </li>`
-        }
-
        
-        html += ` </ul>
-        </div>
-    </div>
-</div>
-</div>
-</section>`
-    }
-
-    if (meta.social && meta.social.filter(x=>x.value).length) {
-
-        html += ` <section class="bio-section">
-        <div class="container">
-        <div class="row">
-        <div class="col-lg-12">
-            <div>
-                <h4 class="text-center">Social Media</h4>
-                <ul class="list-view social-list" style="gap: 1.6rem;flex-wrap:wrap;">`
-        for (let social of meta.social) {
-            switch (social.type) {
-                case 5:
-                    social.label = 'Facebook'
-                    social['img'] = `https://scube-assets.s3.ap-south-1.amazonaws.com/share/facebook.svg`
-                    break;
-                case 4:
-                    social.label = 'Linkedin'
-                    social['img'] = `https://scube-assets.s3.ap-south-1.amazonaws.com/share/linkedin.svg`
-                    break;
-                case 2:
-                    social.label = 'Hangouts'
-                    social['img'] = `https://scube-assets.s3.ap-south-1.amazonaws.com/share/Behance.svg`
-                    break;
-                case 6:
-                    social.label = 'Instagram'
-                    social['img'] = `https://scube-assets.s3.ap-south-1.amazonaws.com/share/instagaram.svg`
-                    break;
-                case 100:
-                    social.label = social.label
-                    social['img'] = `https://scube-assets.s3.ap-south-1.amazonaws.com/share/customlink.svg`
-                    break;
-                default:
-                    social.label = 'Twitter'
-                    social['img'] = `https://scube-assets.s3.ap-south-1.amazonaws.com/share/ic_add_social_twitter_active.svg`
-                    break;
+        .custom-card-1 {
+            background: linear-gradient(308.44deg, #1C1E22 19.85%, #454950 83.97%);
+            border: 3px solid #4A4A4A;
+            border-radius: 12px;
+        }
+        .download-btn {
+            border-radius: 6px;
+            background: linear-gradient(145deg, #ED5728 0%, #F8772F 100%);
+        }
+        .share-btn{
+            color: #F7742F;
+            text-decoration-line: underline;
+        }
+        .share-btn-submit {
+            border-radius: 24px;
+            background: linear-gradient(145deg, #ED5728 0%, #F8772F 100%);
+        }
+        .custom-card-download {
+            background: linear-gradient(326.93deg, #2A303B 9.44%, #4B5662 105.59%);
+            border: 3px solid rgba(28, 31, 35, 0.3);
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(12.5px);
+            border-radius: 12px;
+        }
+        .card-sub-title{
+            position: relative;
+            color:#606367;
+            z-index:9;
+        }
+        .card-sub-title:before {
+            position: absolute;
+            content: "";
+            height: 3px;
+            width: 18%;
+            bottom:-8px;
+            left:0px;
+            border-bottom:4px solid;
+            border-radius:2px;
+            margin:auto;
+            right:0;
             }
-            html += `<li>
-                        <a>
-                        <img src=${social.img}>
-                            </a>
-                        <p>${social.label}</p>
-                    </li>`
+         .tile-contact{
+            border-radius: 16px;
+            background: linear-gradient(181deg, #22B93A 0%, #CDF0D0 100%);
+         }
+         .tile-email{
+            border-radius: 16px;
+            background: linear-gradient(208deg, #288ED9 0%, #D4F1FB 100%), #FFF;
+         }
+         .tile-whatsapp{
+            border-radius: 16px;
+            background: linear-gradient(211deg, #00C85C 0%, #C9F9D3 100%), #FFF;
+         }
+         .tile-messenger{
+            border-radius: 16px;
+            background: linear-gradient(195deg, #5F1BB7 0%, #DAE2F8 100%), #FFF;
+         }
+         .tile-gpay{
+            border-radius: 16px;
+            background: linear-gradient(183deg, #2DA94F 0%, #CDF0D0 100%), #FFF;
+         }
+         .tile-paypal{
+            border-radius: 16px;
+            background: linear-gradient(210deg, #03A9F4 0%, #C5F6FF 100%), #FFF;
+         }
+         .tile-paytm{
+            border-radius: 16px;
+            background: linear-gradient(210deg, #02B9EF 0%, #C6F1FF 100%), #FFF;
+         }
+         .tile-website{
+            border-radius: 16px;
+            background: linear-gradient(182deg, #24B1D1 0%, #B9F4FF 100%), #FFF;
+         }
+         .tile-drive{
+            border-radius: 16px;
+            background: linear-gradient(182deg, #3C7FD8 0%, #DBF2FF 100%), #FFF;
+         }
+         .tile-document{
+            border-radius: 16px;
+            background: linear-gradient(208deg, #28BEF6 0%, #C6F1FF 100%), #FFF;
+         }
+         .tile-cloud{
+            border-radius: 16px;
+            background: linear-gradient(181deg, #1086C9 0%, #C6F1FF 100%), #FFF;
+         }
+         .tile-custom{
+            border-radius: 16px;
+            background: linear-gradient(199deg, #F1F1F1 0%, #FFF 100%), #FFF;
+         }
+         .tile-education{
+            border-radius: 16px;
+            background: linear-gradient(184deg, #55B943 0%, #CDF0D0 100%);
+         }
+         .tile-experience{
+            border-radius: 16px;
+            background: linear-gradient(211deg, #CDE84E 0%, #CDF0D0 100%);
+         }
+         .tile-hobbies{
+            border-radius: 16px;
+            background: linear-gradient(183deg, #16CABF 0%, #B9EBE8 100%), #FFF;
+         }
+         .tile-info{
+            border-radius: 16px;
+            background: linear-gradient(183deg, #1D3A89 0%, #DAE2F8 100%), #FFF;
+         }
+         .tile-add-home{
+            border-radius: 16px;
+            background: linear-gradient(189deg, #D91817 1.66%, #FAD6CE 100%), #FFF;
+         }
+         .tile-add-office{
+            border-radius: 16px;
+            background: linear-gradient(181deg, #D94617 1.66%, #FAD6CE 100%);
+         }
+         .tile-facebook{
+            border-radius: 16px;
+            background: linear-gradient(186deg, #1E89F7 0%, #D0F5FC 100%), #FFF;
+         }
+         .tile-linkedin{
+            border-radius: 16px;
+            background: linear-gradient(215deg, #0A66C2 0%, #DDFFFD 100%), #FFF;
+         }
+         .tile-skype{
+            border-radius: 16px;
+            background: linear-gradient(215deg, #39A4DD 0%, #CFF8FF 100%), #FFF;
+         }
+         .tile-instagram{
+            border-radius: 16px;
+            background: linear-gradient(179deg, #EA3577 0%, #FFDBE5 100%), #FFF;
+         }
+         .tile-hangout{
+            border-radius: 16px;
+            background: linear-gradient(211deg, #22B93A 0%, #CDF0D0 100%);
+         }
+         .tile-twitter{
+            border-radius: 16px;
+            background: linear-gradient(180deg, #38A4DD 0%, #D0F5FC 100%), #FFF;
+         }
+         .profile-img{
+            border-radius: 118px;
+            background: #FFF;
+            box-shadow: 0px 3.2068965435028076px 20.04310417175293px 0px rgba(0, 0, 0, 0.25);
+         }
+         .profile-img img{
+            margin: auto;
+            position: absolute;
+            top: -17px;
+            left: 0;
+            right:0;
+         }
+         .line {
+            display: block;
+            height: 1px;
+            border: 0;
+            border-top: 1px solid #F8F8F8;
+            padding: 0;
+          }
+          .tile-sec{
+            justify-content: center;
+            display: flex;
+            flex-wrap: wrap;
+          }
+          .tile-box{
+            flex: 0 0 33.333333%;
+          }
+
+          .card-website{
+            background: #C7E8EE;
+            box-shadow: 0px 2.11429px 5.28571px rgba(0, 0, 0, 0.15);
         }
-        html += `</ul>
-            </div>
-        </div>
-    </div>
-    </div>
-</section>`
-    }
 
-    if (meta.addresses && meta.addresses.filter(x=>x.city).length) {
-        html += `<section class="bio-section">
-       <div class="container">
-           <div class="row">
-               <div class="col-lg-12">
-                   <div class="address-view">
-                       <h4 class="text-center">Address & Location</h4>
-                   </div>
-               </div>
-           </div>
-           <div class="row">
-           <div class="col-lg-12">
-           <div>
-           <ul class="list-view youtube-link">`
-
-        meta.addresses.forEach((element: any) => {
-            let name = element.type == 1 ? 'Home' : (element.type == 2 ? 'Work' : element.label)
-            html += `<li>
-                     <a>
-                     <img src="https://scube-assets.s3.ap-south-1.amazonaws.com/share/address.svg">
-                    </a>
-                   <p>${name}</p>
-                   </li>`
-        });
-
-        html += ` </ul>
-                </div>
-                </div>
-                </div>
-                </div>
-                </section>`
-
-    }
-
-    if (meta.websites && (meta.websites.filter(x=>x.value).length)) {
-        html += ` <section class="bio-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div>
-                        <h4 class="text-center">Website & Links</h4>
-                        <ul class="list-view">`
-
-        for (let _web of meta.websites) {
-            html += `<li>
-                     <a>
-                     <img src="https://scube-assets.s3.ap-south-1.amazonaws.com/share/website.svg">
-                     </a>
-                     <p>Website</p>
-                     </li>`
-        }
-        for (let web of meta.websites) {
-            switch (web.type) {
-                case 21:
-                    web['img'] = `https://scube-assets.s3.ap-south-1.amazonaws.com/share/google_drive.svg`
-                    break;
-                case 22:
-                    web['img'] = `https://scube-assets.s3.ap-south-1.amazonaws.com/share/Documents.svg`
-                    break;
-                default:
-                    web['img'] = `https://scube-assets.s3.ap-south-1.amazonaws.com/share/Web_cloud.svg`
-                    break;
+        </style>
+        <script>
+            tailwind.config = {
+                content: ['./src/**/*.{js,jsx,ts,tsx}'],
+                theme: {
+                    extend: {
+                        opacity: {
+                            45: '0.45',
+                        },
+                        borderOpacity: {
+                            65: '0.65',
+                        },
+                        fontFamily: {
+                            UrbanistRegular: ['Urbanist, sans-serif'],
+                        },
+                        colors: ({ colors }) => ({
+                            inherit: colors.inherit,
+                            current: colors.current,
+                            transparent: colors.transparent,
+                            primary: "#CAEFD7",
+                            secondary: "#ABC9E9",
+                            info: "#F0E8C9",
+                            black: colors.black,
+                            white: colors.white,
+                            slate: colors.slate,
+                            btn_left: '#92C0ED',
+                            btn_right: '#77E1E1',
+                            text_color: "#939FA7",
+                            text_black: "#153750",
+                            gray: {
+                                50: "#FAFAFC",
+                                100: "#E9E9EC",
+                                200: "#C6C8CD",
+                                300: "#ACAEB6",
+                                400: "#92959F",
+                                500: "#777C87",
+                                600: "#5D6370",
+                                700: "#434959",
+                                800: "#293041",
+                                900: "#0f172a",
+                            },
+                            zinc: colors.zinc,
+                            neutral: colors.neutral,
+                            stone: colors.stone,
+                            red: colors.red,
+                            orange: colors.orange,
+                            amber: colors.amber,
+                            yellow: colors.yellow,
+                            lime: colors.lime,
+                            green: colors.green,
+                            emerald: colors.emerald,
+                            teal: colors.teal,
+                            cyan: colors.cyan,
+                            sky: colors.sky,
+                            blue: colors.blue,
+                            indigo: colors.indigo,
+                            violet: colors.violet,
+                            purple: colors.purple,
+                            fuchsia: colors.fuchsia,
+                            pink: colors.pink,
+                            rose: colors.rose,
+                        }),
+                    },
+                },
+                plugins: [],
             }
-            html += `<li>
-                    <a>
-                    <img src=${web.img}>
-                    </a>
-                    <p>${web.label}</p>
-                    </li>`
-        }
+        </script>
+       
+        <script type="text/javascript">
+            function toggleModal(modalID) {
+                document.getElementById(modalID).classList.toggle("hidden");
+                document.getElementById(modalID + "-backdrop").classList.toggle("hidden");
+                document.getElementById(modalID).classList.toggle("flex");
+                document.getElementById(modalID + "-backdrop").classList.toggle("flex");
+                let clsName = document.getElementById('download-sec').className;
+                console.log(clsName);
+                if(clsName.includes('bg-white')) {
+                    document.getElementById('download-sec').classList.add("bg-transparent");
+                    document.getElementById('download-sec').classList.remove("bg-white");
+                    document.getElementById('verticalLine').classList.remove("line");
+                    
+                } else {
+                    document.getElementById('download-sec').classList.add("bg-white");
+                    document.getElementById('download-sec').classList.remove("bg-transparent");
+                    document.getElementById('verticalLine').classList.add("line");
+                }
+            }
+            function download() {
+                let content = "${encodeURIComponent(vCardFormattedText)}";
+                window.open("data:text/x-vcard;urlencoded," + content)
+                setTimeout(() => {
+                let ele = document.getElementById('main_sec');
+                if(ele) ele.style.display = 'none';
 
-        html += `</ul>
+                let ele1 = document.getElementById ('success_sec')
+                if(ele1) ele1.style.display = 'block';
+
+                let e = document.getElementById ('modal-title')
+                e.innerText = 'Contact have Been Downloaded Successfully !'
+                },100)
+            }
+            function _base64ToArrayBuffer(base64) {
+                var binary_string = window.atob(base64);
+                var len = binary_string.length;
+                var bytes = new Uint8Array(len);
+                for (var i = 0; i < len; i++) {
+                    bytes[i] = binary_string.charCodeAt(i);
+                }
+                return bytes.buffer;
+            }
+    
+            function submitForm() {
+                const userId = '${profile.user_id}'
+                let x = document.forms["contactForm"];
+                let ele = document.getElementById('errorMessage');
+                ele.innerText = ''
+    
+                if (!x.name.value || !x.email.value || !x.phone.value) {
+                    ele.innerText = 'Please Select required fields'
+                    return
+                }
+    
+                let obj = {
+                    name: x.name.value,
+                    email: x.email.value,
+                    designation: x.designation.value,
+                    company: x.company.value,
+                    phone: x.phone.value,
+                    user_id: userId
+                }
+    
+                const http = new XMLHttpRequest()
+                http.open('POST', '/share')
+                http.setRequestHeader('Content-type', 'application/json')
+                http.send(JSON.stringify(obj)) // Make sure to stringify
+                http.onload = function () {
+                    // success callback
+                    setTimeout(() => {
+                        let ele = document.getElementById('main_sec');
+                        if(ele) ele.style.display = 'none';
+        
+                        let ele1 = document.getElementById ('success_sec')
+                        if(ele1) ele1.style.display = 'block';
+        
+                        let e = document.getElementById ('modal-title')
+                        e.innerText = 'Your Details Has been Shared Successfully !'
+                        },100)
+                }
+    
+            }
+            function handleClick(type,value,label) {
+                if(type ==='LINK'){
+                    window.open(value,'_blank');
+                } else if(type ==='PHONE') {
+                    document.location.href = 'tel:'+value;
+                } else if(type ==='EMAIL') {
+                    window.location.href = "mailto:"+value+"?subject=Subject&body=Hi";
+                } else if(type ==='INFO') {
+                    let ele = document.getElementById('info-title')
+                    if(ele){
+                        ele.innerText = label.replace(/_/g, ' ').replace(/__/g, "\\'").replace(/___/g, '');
+                      let ele2  =  document.getElementById('info-message')
+                      if(ele2) ele2.innerText = value.replace(/_/g, ' ');
+                    }
+                    toggleModal('info-form')
+                }
+            }
+
+            function copyMessage( ){
+                let ele = document.getElementById('info-message')
+                var text = ele.innerText;
+                navigator.clipboard.writeText(text).then(function() {
+                console.log('Async: Copying to clipboard was successful!');
+                }, function(err) {
+                console.error('Async: Could not copy text: ', err);
+                });
+            }
+
+        </script>
+    </head>
+    
+    <body>
+        <main class="main p-4 main_animation" id="main_sec">
+            <div class="relative" id="home">
+                <div id="one" class="cus-sticky mt-4">
+                    <div
+                        class="max-w-md m-auto p-6   custom-card-1">
+                         <div class='profile-img'>
+                         <img class="rounded-full w-24 h-24" src=${data.image_url ? data.image_url
+                            : 'https://scube-assets.s3.ap-south-1.amazonaws.com/share/profile.png'}
+                           alt="profile picture">
+                         </div>
+                        <div class="flex items-center justify-center mt-14  space-x-6">
+                            <div class="font-medium  text-center">
+                                <h1 class="text-white font-bold text-base md:text-2xl">${data.name}</h1>
+                                <p class="text-white text-sm ">${data.job}</p>
+                                <p class="text-white text-sm">${data.company}</p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>`
-    }
-
-   
-    if  (meta.others && meta.others.length) {
-        html += `  <section class="bio-section pt-5">
-        <div class="container">
-            <div class="row">
-            <div class="col-lg-12">
-                <div>
-                    <h4 class="text-center">Other Information</h4>
-                    <ul class="list-view">`
-        for (let other of meta.others) {
-            switch (other.type) {
-                case 1:
-                    other.label = `Education`
-                    other['img'] = `https://scube-assets.s3.ap-south-1.amazonaws.com/share/education.svg`
-                    break;
-                case 2:
-                    other.label = `Experience`
-                    other['img'] = `https://scube-assets.s3.ap-south-1.amazonaws.com/share/experience.svg`
-                    break;
-                case 2:
-                    other.label = `Hobbies`
-                    other['img'] = `https://scube-assets.s3.ap-south-1.amazonaws.com/share/hobbies.svg`
-                    break;
-                default:
-                    other.label = `Info`
-                    other['img'] = `https://scube-assets.s3.ap-south-1.amazonaws.com/share/information.svg`
-                    break;
-            }
-            html += ` <li>
-                            <a>
-                           <img src=${other.img}>
-                           </a>
-                             <p>${other.label}</p>
-                        </li>`
-        }
-        html += `</ul>
-                </div>
-            </div>
-        </div>
-        </div>
-    </section>`
-    }
-
-    html += ` <section class="bottom-view" id="download">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="download-view">
-                    <p>Download Contact, To get full Profile information</p>
-                    <div class="actions">
-                    <button class="download-btn" onclick="download()">
-                        Download Contact
-                    </button>
-                   
-                </div>
-                </div>
-            </div>
-    </div>
-</section>
-</div>
-
-<div class="success-page">
-<section>
-    <div style="padding: 24px 23px;cursor: pointer;" onclick="back('success-page')">
-       < Go Back
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="logo">
-                    <img src="https://scube-assets.s3.ap-south-1.amazonaws.com/share/scube_logo.svg">
-                </div>
-                <div class="text-center">
-                    <h4>Contact have been Downloaded Sucessfully!</h4>
-                </div>
-                <div>
-                </div>
-            </div>
-        </div>
-        <div class="row mt-5">
-            <div class="col-6">
-                <div class="app-view">
-                    <a href="https://apps.apple.com/in/app/scube-card/id1490239709" target="_blank">
-                        <img src="https://scube-assets.s3.ap-south-1.amazonaws.com/share/apple_store.svg">
-                    </a>
-                    <a class="app-content" href="https://apps.apple.com/in/app/scube-card/id1490239709" target="_blank">
-                        <p>Available on the</p>
-                        <p>App Store</p>
-                    </a>
-                </div>
-
-            </div>
-            <div class="col-6">
-                <div class="app-view">
-                    <a href="https://play.google.com/store/apps/details?id=com.scube&hl=en_IN" target="_blank">
-                        <img src="https://scube-assets.s3.ap-south-1.amazonaws.com/share/apple_store.svg">
-                    </a>
-                    <a class="app-content" href="https://play.google.com/store/apps/details?id=com.scube&hl=en_IN" target="_blank">
-                        <p>Get it on</p>
-                        <p>Google Play</p>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="download-view-content mt-4">
-            <p>Download the SCUBE app</p>
-        </div>
-    </div>
-</section>
-
-</div>
-
-<div class="success-page-contact">
-<section>
-    <div style="padding: 24px 23px;cursor: pointer;" onclick="back('success-page-contact')">
-                < Go Back
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="logo">
-                    <img src="https://scube-assets.s3.ap-south-1.amazonaws.com/share/scube_logo.svg">
-                </div>
-                <div class="text-center">
-                    <h4>Contact Shared Successfully!</h4>
-                </div>
-                <div>
-                </div>
-            </div>
-        </div>
-        <div class="row mt-5">
-            <div class="col-6">
-                <div class="app-view">
-                    <a href="https://apps.apple.com/in/app/scube-card/id1490239709" target="_blank">
-                        <img src="https://scube-assets.s3.ap-south-1.amazonaws.com/share/apple_store.svg">
-                    </a>
-                    <a class="app-content" href="https://apps.apple.com/in/app/scube-card/id1490239709" target="_blank">
-                        <p>Available on the</p>
-                        <p>App Store</p>
-                    </a>
-                </div>
-
-            </div>
-            <div class="col-6">
-                <div class="app-view">
-                    <a href="https://play.google.com/store/apps/details?id=com.scube&hl=en_IN" target="_blank">
-                        <img src="https://scube-assets.s3.ap-south-1.amazonaws.com/share/apple_store.svg">
-                    </a>
-                    <a class="app-content" href="https://play.google.com/store/apps/details?id=com.scube&hl=en_IN" target="_blank">
-                        <p>Get it on</p>
-                        <p>Google Play</p>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="download-view-content mt-4">
-            <p>Download the SCUBE app</p>
-        </div>
-    </div>
-</section>
-</div>
-
-
-<div id="myModal" class="modal">
-<div class="container">
-    <div class="row">
-        <div class="col-12 ">
-            <div class="pop-view position-relative">
-                <div>
-                    <p>Hi</p>
-                    <p>share your contact safe and </p>
-                    <p>secure with Scube App</p>
-                    <p>Share your Details to ${meta.displayName}</p>
-                </div>
-                <div class="mt-4">
-                <form onsubmit="return false"  name="contactForm">
-                <div class="input-group custom-group">
-                    <span class="input-group-addon"><img
-                            src="https://scube-assets.s3.ap-south-1.amazonaws.com/share/name.svg"></span>
-                    <input id="name" type="text" class="form-control" name="name"
-                        placeholder="Enter your name" required maxlength="50">
-                </div>
-                <div class="input-group custom-group">
-                    <span class="input-group-addon"><img
-                            src="https://scube-assets.s3.ap-south-1.amazonaws.com/share/Designation.svg"></span>
-                    <input id="designation" type="text" class="form-control" name="designation"
-                        placeholder="Enter your Designation" maxlength="50">
-                </div>
-                <div class="input-group custom-group">
-                    <span class="input-group-addon"><img
-                            src="https://scube-assets.s3.ap-south-1.amazonaws.com/share/contact.svg"></span>
-                    <input id="phone" type="text" class="form-control" name="phone"
-                        placeholder="Enter your Contact Number" required maxlength="20">
-                </div>
-                <div class="input-group custom-group">
-                    <span class="input-group-addon"><img
-                            src="https://scube-assets.s3.ap-south-1.amazonaws.com/share/Mail_id.svg"></span>
-                    <input id="email" type="email" class="form-control" name="email"
-                        placeholder="Enter your Email id" required maxlength="225">
-                </div>
-                <div class="input-group custom-group">
-                    <span class="input-group-addon"><img
-                            src="https://scube-assets.s3.ap-south-1.amazonaws.com/share/Company_Business.svg"></span>
-                    <input id="company" type="text" class="form-control" name="company"
-                        placeholder="Company / Business / Organisation" maxlength="50">
-                </div>
-                <p id="errorMessage"></p>
-
-                <div class="d-flex justify-content-center">
-                    <button class="share-btn" type="submit" onclick="submitForm()">
-                        <span class="btn-txt">
-                            Share 
+                    <div class=" max-w-md m-auto flex items-center  justify-between px-6 py-6 bg-white" id="download-sec">
+                    <button class="download-btn cursor-pointer" onclick="download()">
+                        <span class="block text-white text-base px-4 md:px-8 py-3 rounded-full">Download Contact
                         </span>
                     </button>
+                    <a class="share-btn cursor-pointer"
+                        onclick="toggleModal('modal-id')">
+                        <span class="block text-base ">Share your
+                            Contact</span>
+                    </a>
                 </div>
-            </form>
+                <hr class=" max-w-md m-auto line pt-2" id="verticalLine" />
                 </div>
-                <div class="close-icon" id="close" style="cursor:pointer">
-                    <img src="https://i.ibb.co/Lr7G6jz/Group-16702.png" />
-                </div>
+                `
+
+    if(data.bio) {
+        html += `<div class="max-w-md m-auto  p-4  custom-card-bio">
+            <div>
+                <h6 class="font-bold">Bio : </h6>
+                ${data.bio}
             </div>
+    </div>`
+    }                 
+   
+
+    for (let section of sections) {
+        if (data[section.key] && data[section.key].length) {
+            html += `<div
+                                class="max-w-md m-auto p-6 ">
+                                <div>
+                                    <h1 class="text-2xl card-sub-title text-center ">${section.title}</h1>
+                                    <div class="${data[section.key].length == 1 ? 'tile-sec' :'grid grid-cols-3 gap-4'}  pt-8">`
+
+            for (let item of data[section.key]) {
+                html += `<div class="flex flex-col items-center  ${data[section.key].length == 1 ? 'tile-box' :''} ">
+                <div class="box p-4 cursor-pointer items-center flex justify-center text-center flex-col ${item.class}" onclick=handleClick('${item.link_type}','${item.url ? item.url : item.value}','${item.label?.replace(/(\r\n|\n|\r)/gm, '').replace(/\s/g, '_').replace('Drive Link', 'Drive')
+                        .replace('Cloud Link', 'Cloud')}')>
+                                        <img src=${item.icon}>
+                                        </div>
+                                        <span class="text-[#3B3E41]">${(item.name || item.label)?.replace('Drive Link', 'Drive')
+                                        .replace('Cloud Link', 'Cloud')} </span>
+                                        </div>
+                                        `
+            }
+
+            html += `
+                                    </div>
+                                </div>
+                            </div>`
+        }
+    }
+
+    html += ` <div id="one" class="sticky mt-4">
+    <div id="one" class="sticky mt-4">
+    <div class="max-w-md m-auto p-4">
+        <div class="flex flex-col justify-center items-center">
+            <div class="logo pt-4">
+                <img src="https://scube-assets.s3.ap-south-1.amazonaws.com/app-profile-v3/logo.svg">
+            </div>
+
+            <p class="text-xl text-black">Download the SCUBE app Now !</p>
+
+
+            <div class="flex justify-between w-full  pt-4">
+            <div class="flex card-tile apk-icon px-2 py-1">
+            <a href="https://apps.apple.com/in/app/scube-card/id1490239709" target="_blank" class="flex gap-2">
+                <img src="https://scube-assets.s3.ap-south-1.amazonaws.com/app-profile-v3/app-store.svg">
+                <div>
+                    <p class="opacity-80 text-sm pt-1">Available on the </p>
+                    <h2 class="font-semibold text-sm md:text-base">App Store</h2>
+                </div>
+              </a>
+            </div>
+            <div class="flex card-tile apk-icon px-2 py-1">
+            <a href="https://play.google.com/store/apps/details?id=com.scube&hl=en_IN" target="_blank" class="flex gap-2">
+                <img src="https://scube-assets.s3.ap-south-1.amazonaws.com/app-profile-v3/play-store.svg">
+                <div>
+                    <p class="opacity-80 text-sm pt-1">Get it on </p>
+                    <h2 class="font-semibold text-sm md:text-base">Google Play</h2>
+                </div>
+            </a>
+            </div>
+        </div>
+            <p class="pt-8 text-black">Get your scube card today  <strong> <a class="underline" href="https://scube.me" target="_blank">Click here </a> </strong> </p>
         </div>
     </div>
 </div>
+            </div>
+            <div class="hidden overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center"
+                id="modal-id">
+                <div class="relative w-auto my-6 mx-auto max-w-3xl">
+                    <!--content-->
+                    <div
+                        class="border-0 rounded-xl shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none share-form-sec">
+                        <!--header-->
+                        <div
+                            class="flex items-start justify-between px-5 py-2 border-b border-solid border-slate-200 rounded-t">
+                            <div class="flex flex-col">
+                               <div class="flex">
+                                    <h3 class="text-2xl font-semibold pt-2">
+                                    Hi
+                                    </h3>
 
-</div>
+                                    <button class="p-1 ml-auto  float-right" onclick="toggleModal('modal-id')">
+                                    <span class=" block outline-none">
+                                        <img src="https://scube-assets.s3.ap-south-1.amazonaws.com/app-profile/close.svg" />
+                                    </span>
+                                </button>
 
+                               </div>
+                                <p class="pt-2 text-sm md:text-base">share your contact safe and secure with <strong>SCUBE App.</strong></p>
+                                <p class="text-sm md:text-base">Share your Details to <strong>${profile.displayName}</strong></p>
+    
+                            </div>
+                        </div>
+                        <!--body-->
+                        <div class="relative p-6 flex-auto">
+                            <form onsubmit="return false" name="contactForm" class="share-form">
+                                <div class="relative flex w-full flex-wrap items-stretch mb-3">
+                                    <span
+                                        class="z-10 h-full leading-snug font-normal absolute text-center text-slate-300 absolute bg-transparent rounded text-base items-center justify-center w-12 pl-1 py-1">
+                                        <img
+                                            src="https://scube-assets.s3.ap-south-1.amazonaws.com/app-profile/input-name.svg" />
+                                    </span>
+                                    <input id="name" type="text" name="name" placeholder="Enter your name" required
+                                        class="pl-12 pr-3 py-3 placeholder-slate-300 text-slate-600 relative bg-white rounded-xl text-sm border border-slate-300 outline-none focus:outline-none focus:ring w-full pl-10" />
+                                </div>
+    
+                                <div class="relative flex w-full flex-wrap items-stretch mb-3">
+                                    <span
+                                        class="z-10 h-full leading-snug font-normal absolute text-center text-slate-300 absolute bg-transparent rounded text-base items-center justify-center w-12 pl-1 py-1">
+                                        <img
+                                            src="https://scube-assets.s3.ap-south-1.amazonaws.com/app-profile/input-designation.svg" />
+                                    </span>
+                                    <input id="designation" type="text" name="designation" placeholder="Enter your Designation"
+                                        required
+                                        class="pl-12 pr-3 py-3 placeholder-slate-300 text-slate-600 relative bg-white rounded-xl text-sm border border-slate-300 outline-none focus:outline-none focus:ring w-full pl-10" />
+                                </div>
+    
+                                <div class="relative flex w-full flex-wrap items-stretch mb-3">
+                                    <span
+                                        class="z-10 h-full leading-snug font-normal absolute text-center text-slate-300 absolute bg-transparent rounded text-base items-center justify-center w-12 pl-1 py-1">
+                                        <img
+                                            src="https://scube-assets.s3.ap-south-1.amazonaws.com/app-profile/input-phone.svg" />
+                                    </span>
+                                    <input id="phone" type="text" name="phone" placeholder="Enter your Contact Number"
+                                        required
+                                        class="pl-12 pr-3 py-3 placeholder-slate-300 text-slate-600 relative bg-white rounded-xl text-sm border border-slate-300 outline-none focus:outline-none focus:ring w-full pl-10" />
+                                </div>
+    
+                                <div class="relative flex w-full flex-wrap items-stretch mb-3">
+                                    <span
+                                        class="z-10 h-full leading-snug font-normal absolute text-center text-slate-300 absolute bg-transparent rounded text-base items-center justify-center w-12 pl-1 py-1">
+                                        <img
+                                            src="https://scube-assets.s3.ap-south-1.amazonaws.com/app-profile/input-email.svg" />
+                                    </span>
+                                    <input id="email" type="email" name="email" placeholder="Enter your Email id" required
+                                        class="pl-12 pr-3 py-3 placeholder-slate-300 text-slate-600 relative bg-white rounded-xl text-sm border border-slate-300 outline-none focus:outline-none focus:ring w-full pl-10" />
+                                </div>
+    
+                                <div class="relative flex w-full flex-wrap items-stretch mb-3">
+                                    <span
+                                        class="z-10 h-full leading-snug font-normal absolute text-center text-slate-300 absolute bg-transparent rounded text-base items-center justify-center w-12 pl-1 py-1">
+                                        <img
+                                            src="https://scube-assets.s3.ap-south-1.amazonaws.com/app-profile/input-company.svg" />
+                                    </span>
+                                    <input id="company" type="text" name="company"
+                                        placeholder="Company / Business / Organization" required
+                                        class="pl-12 pr-3 py-3 placeholder-slate-300 text-slate-600 relative bg-white rounded-xl text-sm border border-slate-300 outline-none focus:outline-none focus:ring w-full pl-10" />
+                                </div>
+    
+                                <p id="errorMessage" class="text-red"></p>
+    
+                                <div class="flex items-center justify-center p-3">
+                                    <button class="share-btn-submit" onclick="submitForm()">
+                                        <span class="block text-white text-base px-8 py-2 rounded-full">Share
+                                        </span>
+                                    </button>
+                                </div>
+    
+                            </form>
+                        </div>
+                        <!--footer-->
+    
+                    </div>
+                </div>
+            </div>
+            <div class="hidden overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center"
+            id="info-form">
+            <div class="relative w-auto my-6 mx-auto max-w-3xl">
+                <!--content-->
+                <div
+                    class="border-0 rounded-xl shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                    <!--header-->
+                    <div
+                        class="flex items-center justify-between px-5 py-2 rounded-t">
+                        <h1 class="text-center w-full pl-8 text-xl font-semibold " id="info-title"></h1>
+                        <button class="p-1 ml-auto  float-right" onclick="toggleModal('info-form')">
+                            <span class=" block outline-none">
+                                <img src="https://scube-assets.s3.ap-south-1.amazonaws.com/app-profile/close.svg" />
+                            </span>
+                        </button>
+                    </div>
+                    <!--body-->
+                    <div class="relative px-6 py-1 flex-auto  text-center">
+                        <p class="w-[200px]" id="info-message"></p>
+                    </div>
+    
+                    <p class="underline text-center w-full flex justify-center py-4 cursor-pointer" onclick="copyMessage()" >Copy</p>
+                    <!--footer-->
+    
+                </div>
+            </div>
+             </div>
 
-<script>
-function _base64ToArrayBuffer(base64) {
-    var binary_string = window.atob(base64);
-    var len = binary_string.length;
-    var bytes = new Uint8Array(len);
-    for (var i = 0; i < len; i++) {
-        bytes[i] = binary_string.charCodeAt(i);
-    }
-    return bytes.buffer;
-}
-</script>
+            <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id-backdrop"></div>
+           <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="info-form-backdrop"></div>
+        </main>
 
-<script>
-    function download(){
-        let content = "${encodeURIComponent(vCardFormattedText)}";
-        window.open("data:text/x-vcard;urlencoded,"+content)
-        var [element_1] = document.getElementsByClassName('block-view');
-        element_1.style.display = 'none'
-
-        var [element_3] = document.getElementsByClassName('bottom-view');
-        element_3.style.display = 'none'
-
-        var [element_2] = document.getElementsByClassName('success-page');
-        element_2.style.height = "100vh";
-        element_2.style.display = 'block'
-    }
-    function back(type){
-        var [element_1] = document.getElementsByClassName('block-view');
-        element_1.style.display = 'block'
-
-        var [element_3] = document.getElementsByClassName('bottom-view');
-        element_3.style.display = 'block'
-
-        var [element_2] = document.getElementsByClassName(type);
-        element_2.style.display = 'none'
-        
-        setTimeout(() => {
-        var [element_4] = document.getElementsByClassName('bottom-view');
-        element_4.classList.add("active");
-        }, 500)
-    }
-</script>
-
-<script>
-document.addEventListener("DOMContentLoaded", function (event) {
-    setTimeout(() => {
-        var [element_1] = document.getElementsByClassName('bottom-view');
-        element_1.classList.add("active");
-
-    }, 1000)
-
-    window.addEventListener('click', function (e) {
-        if (!document.getElementById('download').contains(e.target)) {
-            var [element_1] = document.getElementsByClassName('bottom-view')
-            if (element_1.classList.toString().includes('active')) {
-                element_1.classList.remove("active");
-            } else {
-                element_1.classList.add("active");
-            }
-        }
-    });
-
-    window.addEventListener('scroll', function () {
-        var [element_1] = document.getElementsByClassName('bottom-view')
-        if (!element_1.classList.toString().includes('active')) {
-            element_1.classList.add("active");
-        }
-    });
-});
-
-
-function submitForm(){
-    const userId = '${profile.user_id}'
-    let x = document.forms["contactForm"];
-    let ele = document.getElementById('errorMessage');
-    ele.innerText =''
-
-    if(!x.name.value || !x.email.value || !x.phone.value){
-        ele.innerText ='Please Select required fields' 
-        return
-    }
-
-    let obj = {
-         name:x.name.value,
-         email:x.email.value,
-         designation:x.designation.value,
-         company: x.company.value,
-         phone: x.phone.value,
-         user_id:userId
-     }
-
-    const http = new XMLHttpRequest()
-        http.open('POST', '/share')
-        http.setRequestHeader('Content-type', 'application/json')
-        http.send(JSON.stringify(obj)) // Make sure to stringify
-        http.onload = function() {
-            var modal = document.getElementById("myModal");
-            modal.style.display="none"
-            var [element_1] = document.getElementsByClassName('block-view');
-            element_1.style.display = 'none'
-
-            var [element_3] = document.getElementsByClassName('bottom-view');
-            element_3.style.display = 'none'
-            
-            var [element_2] = document.getElementsByClassName('success-page-contact');
-            element_2.style.height = "100vh";
-            element_2.style.display = 'block'
-        }
-
-}
-</script>
-
-    <script>
-        var modal = document.getElementById("myModal");
-        var btn = document.getElementById("myBtn");
-        var [element_1] = document.getElementsByClassName('bottom-view');
-        if(btn){
-            btn.onclick = function () {
-            modal.style.display = "block";
-            document.body.style.overflow = 'hidden'
-            if(element_1)element_1.style.display ='none';
-        }
-        }
-        var close = document.getElementById("close");
-        
-        if(close){
-            close.onclick = function () {
-            modal.style.display = "none";
-            document.body.style.overflow = 'auto'
-            if(element_1)element_1.style.display ='block';
-        }   
-        }
-
-        window.onclick = function (event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-                document.body.style.overflow = 'auto'
-            if(element_1)element_1.style.display ='block';
-            }
-        }
-    </script>
-
-
-</body>
-
-</html>`
+        <div class="main p-4 hidden" id="success_sec">
+            <div class="relative" id="home">
+                <div aria-hidden="true" class="absolute inset-0 grid grid-cols-2 -space-x-52 opacity-40 ">
+                    <div class="blur-[50px] h-screen bg-gradient-to-r from-primary via-info to-secondary ">
+                    </div>
+                    <div class="blur-[50px] h-screen bg-gradient-to-r from-secondary via-primary to-info">
+                    </div>
+                </div>
+                <div id="success_page" class="sticky mt-4">
+                    <div
+                        class="max-w-md m-auto p-6 bg-white border border-gray-200 rounded-lg custom-card">
+                        <div class="flex flex-col justify-center items-center">
+                            <div class="logo">
+                                <img src="https://scube-assets.s3.ap-south-1.amazonaws.com/app-profile/logo.svg">
+                            </div>
+                    
+                            <h1 class="font-semibold text-xl py-2 text-center" id='modal-title'></h1>
+                    
+                            <div class="flex justify-between w-full px-2 pt-4">
+                                <div class="flex card-website apk-icon">
+                                    <a href="https://apps.apple.com/in/app/scube-card/id1490239709" target="_blank" class="flex gap-2">
+                                    <img src="https://scube-assets.s3.ap-south-1.amazonaws.com/app-profile/app-store.svg">
+                                    <div>
+                                        <p class="opacity-80 text-sm pt-1">Available on the </p>
+                                        <h2 class="font-semibold text-sm md:text-base">App Store</h2>
+                                    </div>
+                                  </a>
+                                </div>
+                                <div class="flex play-store apk-icon">
+                                    <a href="https://play.google.com/store/apps/details?id=com.scube&hl=en_IN" target="_blank" class="flex gap-2">
+                                    <img src="https://scube-assets.s3.ap-south-1.amazonaws.com/app-profile/play-store.svg">
+                                    <div>
+                                        <p class="opacity-80 text-sm pt-1">Get it on </p>
+                                        <h2 class="font-semibold text-sm md:text-base">Google Play</h2>
+                                    </div>
+                                </a>
+                                </div>
+                            </div>
+                            <p class="pt-8">Download the SCUBE app Now !</p>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    </body>
+    
+    </html>`
 
     return html
 }
 
 export function renderProfileMissingHTML() {
     return `<!DOCTYPE html>
-    <html lang="en">
+    <html>
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400&display=swap" rel="stylesheet">
-        <title>Scube</title>
-        <style>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link href="https://api.fontshare.com/css?f[]=author@400,700&display=swap" rel="stylesheet">
+        <title></title>
+        <style type="text/css">
+            html,
             body {
-                padding:0em 1em;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-content: center;
-                align-items: center;
-                font-family: 'Lexend', sans-serif;
-                font-size: 16px;
-                line-height: 1.6;
-                color: #000;
-                text-align: center;
-                height:80vh;
-                background: #1c1e22;
+                margin: 0;
+                padding: 0;
             }
-            h1 {
-                margin-bottom: 0;
-                color: #EDEDED;
+    
+            .sticky {
+                height: fit-content;
+                position: sticky;
+                position: -webkit-sticky;
             }
-            p{
-                color: #EDEDED;
-                opacity: 0.7;
+    
+            #one {
+                top: 0;
+                height: fit-content;
+                -webkit-transition: height 1s ease;
+                transition: height 1s ease;
+            }
+    
+            .container {
+                @apply max-w-7xl mx-auto px-6 md: px-12 xl:px-6;
+            }
+    
+            body {
+                font-family: 'Author', sans-serif;
+            }
+    
+            .card-website{
+                background: #C7E8EE;
+                box-shadow: 0px 2.11429px 5.28571px rgba(0, 0, 0, 0.15);
+            }
+        
+            .card-download-play{
+background: #C7E8EE;
+            }
+    
+            .sub-title {
+                color: rgba(0, 0, 0, 0.45);
+            }
+            .play-store{
+                background: #EBF2CA;
+                box-shadow: 0px 2px 4px rgba(183, 187, 162, 0.4);
+            }
+            .apk-icon {
+                padding: 1px 6px;
+                gap: 6px;
+                border-radius: 11px;
+            }
+            .custom-card{
+                background: #FFFFFF;
+                box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
+                backdrop-filter: blur(12.5px);
+                /* Note: backdrop-filter has minimal browser support */
+
+                border-radius: 12px;
             }
         </style>
+
+        <script>
+            tailwind.config = {
+                content: ['./src/**/*.{js,jsx,ts,tsx}'],
+                theme: {
+                    extend: {
+                        opacity: {
+                            45: '0.45',
+                        },
+                        borderOpacity: {
+                            65: '0.65',
+                        },
+                        fontFamily: {
+                            UrbanistRegular: ['Urbanist, sans-serif'],
+                        },
+                        colors: ({ colors }) => ({
+                            inherit: colors.inherit,
+                            current: colors.current,
+                            transparent: colors.transparent,
+                            primary: "#CAEFD7",
+                            secondary: "#ABC9E9",
+                            info: "#F0E8C9",
+                            black: colors.black,
+                            white: colors.white,
+                            slate: colors.slate,
+                            btn_left: '#92C0ED',
+                            btn_right: '#77E1E1',
+                            text_color: "#939FA7",
+                            text_black: "#153750",
+                            gray: {
+                                50: "#FAFAFC",
+                                100: "#E9E9EC",
+                                200: "#C6C8CD",
+                                300: "#ACAEB6",
+                                400: "#92959F",
+                                500: "#777C87",
+                                600: "#5D6370",
+                                700: "#434959",
+                                800: "#293041",
+                                900: "#0f172a",
+                            },
+                            zinc: colors.zinc,
+                            neutral: colors.neutral,
+                            stone: colors.stone,
+                            red: colors.red,
+                            orange: colors.orange,
+                            amber: colors.amber,
+                            yellow: colors.yellow,
+                            lime: colors.lime,
+                            green: colors.green,
+                            emerald: colors.emerald,
+                            teal: colors.teal,
+                            cyan: colors.cyan,
+                            sky: colors.sky,
+                            blue: colors.blue,
+                            indigo: colors.indigo,
+                            violet: colors.violet,
+                            purple: colors.purple,
+                            fuchsia: colors.fuchsia,
+                            pink: colors.pink,
+                            rose: colors.rose,
+                        }),
+                    },
+                },
+                plugins: [],
+            }
+        </script>
     </head>
-    <body>
-        <div>
-            <div class="logo">
-                <img src="https://scube-assets.s3.ap-south-1.amazonaws.com/share/scube_logo.svg">
-            </div>
     
-            <h1>Uh Ooh! Sorry!</h1>
-            <p>
-                Profile seems missing. Please update your Scube card with your profile.
-            </p>
-        </div>
+    <body>
+        <main class="main p-4">
+            <div class="relative" id="home">
+                <div aria-hidden="true" class="absolute inset-0 grid grid-cols-2 -space-x-52 opacity-40 ">
+                    <div class="blur-[50px] h-screen bg-gradient-to-r from-primary via-info to-secondary ">
+                    </div>
+                    <div class="blur-[50px] h-screen bg-gradient-to-r from-secondary via-primary to-info">
+                    </div>
+                </div>
+                <div id="one" class="sticky mt-4">
+                    <div
+                        class="max-w-md m-auto p-6 bg-white border border-gray-200 rounded-lg custom-card">
+                        <div class="flex flex-col justify-center items-center">
+                            <div class="logo">
+                                <img src="https://scube-assets.s3.ap-south-1.amazonaws.com/app-profile/logo.svg">
+                            </div>
+                    
+                            <h1 class="font-semibold text-2xl py-2">Uh Ooh! sorry!</h1>
+                    
+                            <p class="sub-title text-center py-4">
+                                Profile seems missing. Please update your scube card with your profile 
+                            </p>
+                            <!--
+                            <a href=" https://youtu.be/FbH4cnOdkG8" class="underline"> https://youtu.be/FbH4cnOdkG8</a>
+                            -->
+    
+                            <div class="flex justify-between w-full px-2 pt-4">
+                                <div class="flex card-download-play apk-icon">
+                                    <a href="https://apps.apple.com/in/app/scube-card/id1490239709" target="_blank" class="flex gap-2">
+                                    <img src="https://scube-assets.s3.ap-south-1.amazonaws.com/app-profile/app-store.svg">
+                                    <div>
+                                        <p class="opacity-80 text-sm pt-1">Available on the </p>
+                                        <h2 class="font-semibold text-sm md:text-base">App Store</h2>
+                                    </div>
+                                  </a>
+                                </div>
+                                <div class="flex play-store apk-icon">
+                                    <a href="https://play.google.com/store/apps/details?id=com.scube&hl=en_IN" target="_blank" class="flex gap-2">
+                                    <img src="https://scube-assets.s3.ap-south-1.amazonaws.com/app-profile/play-store.svg">
+                                    <div>
+                                        <p class="opacity-80 text-sm pt-1">Get it on </p>
+                                        <h2 class="font-semibold text-sm md:text-base">Google Play</h2>
+                                    </div>
+                                </a>
+                                </div>
+                            </div>
+                            <p class="pt-8">Download the SCUBE app Now !</p>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+        </main>
     </body>
     </html>`
 }
 
-export function renderProfileInstructionsHTML(){
+export function renderProfileInstructionsHTML() {
     return `<!DOCTYPE html>
-    <html lang="en">
+    <html>
+    
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400&display=swap" rel="stylesheet">
-        <title>Scube</title>
-        <style>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link href="https://api.fontshare.com/css?f[]=author@400,700&display=swap" rel="stylesheet">
+        <title></title>
+        <style type="text/css">
+            html,
             body {
-                padding:0em 1em;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-content: center;
-                align-items: center;
-                font-family: 'Lexend', sans-serif;
-                font-size: 16px;
-                line-height: 1.6;
-                color: #000;
-                text-align: center;
-                height:90vh;
-                background: #1c1e22;
+                margin: 0;
+                padding: 0;
             }
     
-            a{
-                color: #FFFFFF;
-                font-size: 14px;
-            }
-            .light-txt{
-                font-size: 24px;
-                color: #767676;
-                margin: 0;
-            }
-            h1{
-                font-size: 20px;
-                padding-bottom: 10px;
-                color: #EDEDED;
-                margin-bottom: 0;
-            }
-            .instructions{
-                color: #EDEDED;
-                font-size: 18px;
-                line-height: 25px;
-                opacity: 0.8;
-                margin: 0;
+            .sticky {
+                height: fit-content;
+                position: sticky;
+                position: -webkit-sticky;
             }
     
+            #one {
+                top: 0;
+                height: fit-content;
+                -webkit-transition: height 1s ease;
+                transition: height 1s ease;
+            }
+    
+            .container {
+                @apply max-w-7xl mx-auto px-6 md: px-12 xl:px-6;
+            }
+    
+            body {
+                font-family: 'Author', sans-serif;
+            }
+    
+            .card-website{
+                background: #C7E8EE;
+                box-shadow: 0px 2.11429px 5.28571px rgba(0, 0, 0, 0.15);
+            }
+        
+    
+            .sub-title {
+                color: rgba(0, 0, 0, 0.45);
+            }
+            .play-store{
+                background: #EBF2CA;
+                box-shadow: 0px 2px 4px rgba(183, 187, 162, 0.4);
+            }
+            .apk-icon {
+                padding: 1px 6px;
+                gap: 6px;
+                border-radius: 11px;
+            }
+            .custom-card{
+                background: #FFFFFF;
+                box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
+                backdrop-filter: blur(12.5px);
+                border-radius: 12px;
+            }
         </style>
+
+        <script>
+            tailwind.config = {
+                content: ['./src/**/*.{js,jsx,ts,tsx}'],
+                theme: {
+                    extend: {
+                        opacity: {
+                            45: '0.45',
+                        },
+                        borderOpacity: {
+                            65: '0.65',
+                        },
+                        fontFamily: {
+                            UrbanistRegular: ['Urbanist, sans-serif'],
+                        },
+                        colors: ({ colors }) => ({
+                            inherit: colors.inherit,
+                            current: colors.current,
+                            transparent: colors.transparent,
+                            primary: "#CAEFD7",
+                            secondary: "#ABC9E9",
+                            info: "#F0E8C9",
+                            black: colors.black,
+                            white: colors.white,
+                            slate: colors.slate,
+                            btn_left: '#92C0ED',
+                            btn_right: '#77E1E1',
+                            text_color: "#939FA7",
+                            text_black: "#153750",
+                            gray: {
+                                50: "#FAFAFC",
+                                100: "#E9E9EC",
+                                200: "#C6C8CD",
+                                300: "#ACAEB6",
+                                400: "#92959F",
+                                500: "#777C87",
+                                600: "#5D6370",
+                                700: "#434959",
+                                800: "#293041",
+                                900: "#0f172a",
+                            },
+                            zinc: colors.zinc,
+                            neutral: colors.neutral,
+                            stone: colors.stone,
+                            red: colors.red,
+                            orange: colors.orange,
+                            amber: colors.amber,
+                            yellow: colors.yellow,
+                            lime: colors.lime,
+                            green: colors.green,
+                            emerald: colors.emerald,
+                            teal: colors.teal,
+                            cyan: colors.cyan,
+                            sky: colors.sky,
+                            blue: colors.blue,
+                            indigo: colors.indigo,
+                            violet: colors.violet,
+                            purple: colors.purple,
+                            fuchsia: colors.fuchsia,
+                            pink: colors.pink,
+                            rose: colors.rose,
+                        }),
+                    },
+                },
+                plugins: [],
+            }
+        </script>
     </head>
+    
     <body>
-        <div>
-            <div class="logo">
-                <img src="https://scube-assets.s3.ap-south-1.amazonaws.com/share/scube_logo.svg">
+        <main class="main p-4">
+            <div class="relative" id="home">
+                <div aria-hidden="true" class="absolute inset-0 grid grid-cols-2 -space-x-52 opacity-40 ">
+                    <div class="blur-[50px] h-screen bg-gradient-to-r from-primary via-info to-secondary">
+                    </div>
+                    <div class="blur-[50px] h-screen bg-gradient-to-r from-secondary via-primary to-info ">
+                    </div>
+                </div>
+                <div id="one" class="sticky mt-4">
+                    <div
+                        class="max-w-md m-auto p-6 bg-white border border-gray-200 rounded-lg custom-card">
+                        <div class="flex flex-col justify-center items-center">
+                            <div class="logo">
+                                <img src="https://scube-assets.s3.ap-south-1.amazonaws.com/app-profile/logo.svg">
+                            </div>
+                    
+                             <p class="text-xl">Welcome to SCUBE!</p>
+                            <h1 class="font-semibold text-2xl py-2">Your Order Id [ORDERID]</h1>
+                    
+                            <p class="sub-title text-center py-4">
+                                Click on the link below to know how to 
+                                link your QR code with your SCUBE profile 
+                            </p>
+                            <a href=" https://youtu.be/FbH4cnOdkG8" class="underline"> https://youtu.be/FbH4cnOdkG8</a>
+    
+                            <div class="flex justify-between w-full px-2 pt-4">
+                                <div class="flex card-website apk-icon">
+                                    <a href="https://apps.apple.com/in/app/scube-card/id1490239709" target="_blank" class="flex gap-2">
+                                    <img src="https://scube-assets.s3.ap-south-1.amazonaws.com/app-profile/app-store.svg">
+                                    <div>
+                                        <p class="opacity-80 text-sm pt-1">Available on the </p>
+                                        <h2 class="font-semibold text-sm md:text-base">App Store</h2>
+                                    </div>
+                                  </a>
+                                </div>
+                                <div class="flex play-store apk-icon">
+                                    <a href="https://play.google.com/store/apps/details?id=com.scube&hl=en_IN" target="_blank" class="flex gap-2">
+                                    <img src="https://scube-assets.s3.ap-south-1.amazonaws.com/app-profile/play-store.svg">
+                                    <div>
+                                        <p class="opacity-80 text-sm pt-1">Get it on </p>
+                                        <h2 class="font-semibold text-sm md:text-base">Google Play</h2>
+                                    </div>
+                                </a>
+                                </div>
+                            </div>
+                            <p class="pt-8">Download the SCUBE app Now !</p>
+                        </div>
+                    </div>
+                </div>
+    
             </div>
-    
-             <p class="light-txt">Welcome to Scube !</p>
-            <h1>Your Card Is not linked</h1>
-    
-            <p class="instructions">
-                Click on the link below to know how to link your QR code with your SCUBE profile
-            </p>
-        </div>
+        </main>
     </body>
     </html>`
 }
